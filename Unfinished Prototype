@@ -1,5 +1,5 @@
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
+
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 
 
 public class TEST extends Application {
-      Tab tab, tab2, tab3, tab4, tab5, tab6;
+      Tab tab, tab2, tab3, tab4, tab5, tab6;  
       Group root = new Group();
       Scene scene = new Scene(root, 800, 600, Color.WHITE);
       TabPane tabPane = new TabPane();
@@ -34,12 +34,11 @@ public class TEST extends Application {
    
   @Override
   public void start(Stage primaryStage) {
-    primaryStage.setTitle("GoLunar");
-    
+    primaryStage.setTitle("GoLunar");       // name of program
     tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
     
   
-      tab = new Tab("Main");
+      tab = new Tab("Main");    // name of tabs
       tab2 = new Tab("Registration");
       tab3 = new Tab("Student Records");
       tab4 = new Tab("Student Accounts");
@@ -74,9 +73,9 @@ public class TEST extends Application {
   }
   
   public void home(){
-      HBox hbox = new HBox();
+      HBox hbox = new HBox();//horizontal box to allign
       hbox.getChildren().add(new Label("Welcome to GoLunar!"));
-      hbox.setAlignment(Pos.TOP_CENTER);
+      hbox.setAlignment(Pos. CENTER);
       tab.setContent(hbox);
       
       
@@ -98,7 +97,7 @@ public class TEST extends Application {
        Hyperlink courseInfo = new Hyperlink();
       courseInfo.setText("View Basic Course Information");
       
-      VBox vbox = new VBox();
+      VBox vbox = new VBox();//vertical box to allign
       vbox.getChildren().add(new Label("Registration Menu"));
       vbox.getChildren().add(classRegister);
       vbox.getChildren().add(classLookup);
@@ -109,107 +108,99 @@ public class TEST extends Application {
       tab2.setContent(vbox);
   }
   public void records(){
-       Hyperlink holds = new Hyperlink();
+      Hyperlink holds = new Hyperlink();
       holds.setText("View Holds");
       
       Hyperlink finalGrades= new Hyperlink();
       finalGrades.setText("View Final Grades");
       
       Hyperlink myGPA = new Hyperlink();
-      myGPA.setText("my Grade Point Average");
+      myGPA.setText("My Grade Point Average");
       
-      Hyperlink weeklySch = new Hyperlink();
-      weeklySch.setText("View Weekly Student Schedule");
+      Hyperlink myWithdraw = new Hyperlink();
+      myWithdraw.setText("My Withdrawal History");
       
-       Hyperlink courseInfo = new Hyperlink();
-      courseInfo.setText("View Basic Course Information");
+      Hyperlink applyToGrad = new Hyperlink();
+      applyToGrad.setText("Apply to Graduate");
+      
       
       VBox vbox = new VBox();
-      vbox.getChildren().add(new Label("Registration Menu"));
+      vbox.getChildren().add(new Label("Student Records Menu"));
       vbox.getChildren().add(holds);
       vbox.getChildren().add(finalGrades);
       vbox.getChildren().add(myGPA);
-      vbox.getChildren().add(weeklySch);
-      vbox.getChildren().add(courseInfo);
+      vbox.getChildren().add(myWithdraw);
+      vbox.getChildren().add(applyToGrad);
       vbox.setAlignment(Pos.TOP_LEFT);
       tab3.setContent(vbox);
   }
   public void accounts(){
-            Hyperlink holds = new Hyperlink();
-      holds.setText("View Holds");
+      Hyperlink payment = new Hyperlink();
+      payment.setText("Payment");
       
-      Hyperlink finalGrades= new Hyperlink();
-      finalGrades.setText("View Final Grades");
+      Hyperlink refundOpt = new Hyperlink();
+      refundOpt.setText("Refund Options");
       
-      Hyperlink myGPA = new Hyperlink();
-      myGPA.setText("my Grade Point Average");
+      Hyperlink viewRefundSt= new Hyperlink();
+      viewRefundSt.setText("View Refund Status");
       
-      Hyperlink weeklySch = new Hyperlink();
-      weeklySch.setText("View Weekly Student Schedule");
+      Hyperlink tax = new Hyperlink();
+      tax.setText("Select Tax Year");
       
-       Hyperlink courseInfo = new Hyperlink();
-      courseInfo.setText("View Basic Course Information");
       
-      VBox vbox = new VBox();
-      vbox.getChildren().add(new Label("Registration Menu"));
-      vbox.getChildren().add(holds);
-      vbox.getChildren().add(finalGrades);
-      vbox.getChildren().add(myGPA);
-      vbox.getChildren().add(weeklySch);
-      vbox.getChildren().add(courseInfo);
+      VBox vbox = new VBox(); 
+      vbox.getChildren().add(new Label("Student Accounts Menu"));
+      vbox.getChildren().add(payment);
+      vbox.getChildren().add(refundOpt);
+      vbox.getChildren().add(viewRefundSt);
+      vbox.getChildren().add(tax);
       vbox.setAlignment(Pos.TOP_LEFT);
       tab4.setContent(vbox);
   }
   
+
   public void financialAid(){
-            Hyperlink holds = new Hyperlink();
-      holds.setText("View Holds");
+      Hyperlink status = new Hyperlink();
+      status.setText("My Overall Status of Financial Aid");
       
-      Hyperlink finalGrades= new Hyperlink();
-      finalGrades.setText("View Final Grades");
+      Hyperlink eligibility= new Hyperlink();
+      eligibility.setText("Eligibility");
       
-      Hyperlink myGPA = new Hyperlink();
-      myGPA.setText("my Grade Point Average");
+      Hyperlink forms = new Hyperlink();
+      forms.setText("Financial Aid Forms");
       
-      Hyperlink weeklySch = new Hyperlink();
-      weeklySch.setText("View Weekly Student Schedule");
+      Hyperlink questions = new Hyperlink();
+      questions.setText("Financial Aid Questions");
       
-       Hyperlink courseInfo = new Hyperlink();
-      courseInfo.setText("View Basic Course Information");
+      Hyperlink summerApp = new Hyperlink();
+      summerApp.setText("Summer Application");
+      
+      Hyperlink loans = new Hyperlink();
+      loans.setText("Loans");
       
       VBox vbox = new VBox();
-      vbox.getChildren().add(new Label("Registration Menu"));
-      vbox.getChildren().add(holds);
-      vbox.getChildren().add(finalGrades);
-      vbox.getChildren().add(myGPA);
-      vbox.getChildren().add(weeklySch);
-      vbox.getChildren().add(courseInfo);
+      vbox.getChildren().add(new Label("Financial Aid Menu"));
+      vbox.getChildren().add(status);
+      vbox.getChildren().add(eligibility);
+      vbox.getChildren().add(forms);
+      vbox.getChildren().add(questions);
+      vbox.getChildren().add(summerApp);
+      vbox.getChildren().add(loans);
       vbox.setAlignment(Pos.TOP_LEFT);
       tab5.setContent(vbox);
   }
-  public void personalInfo(){
-            Hyperlink holds = new Hyperlink();
-      holds.setText("View Holds");
+  
+    public void personalInfo(){
+      Hyperlink address = new Hyperlink();
+      address.setText("Change Address(es) and Phone(s)");
       
-      Hyperlink finalGrades= new Hyperlink();
-      finalGrades.setText("View Final Grades");
-      
-      Hyperlink myGPA = new Hyperlink();
-      myGPA.setText("my Grade Point Average");
-      
-      Hyperlink weeklySch = new Hyperlink();
-      weeklySch.setText("View Weekly Student Schedule");
-      
-       Hyperlink courseInfo = new Hyperlink();
-      courseInfo.setText("View Basic Course Information");
+      Hyperlink changeInfo= new Hyperlink();
+      changeInfo.setText("Add or Update Emergency Contacts");
       
       VBox vbox = new VBox();
-      vbox.getChildren().add(new Label("Registration Menu"));
-      vbox.getChildren().add(holds);
-      vbox.getChildren().add(finalGrades);
-      vbox.getChildren().add(myGPA);
-      vbox.getChildren().add(weeklySch);
-      vbox.getChildren().add(courseInfo);
+      vbox.getChildren().add(new Label("Personal Information Menu"));
+      vbox.getChildren().add(address);
+      vbox.getChildren().add(changeInfo);
       vbox.setAlignment(Pos.TOP_LEFT);
       tab6.setContent(vbox);
   }
