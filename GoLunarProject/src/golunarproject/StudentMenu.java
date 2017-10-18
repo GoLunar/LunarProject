@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 
 
 public class StudentMenu extends Application {
-      Tab tab, tab2, tab3, tab4, tab5, tab6, tab$$$$$$;  
+      Tab tab, tab2, tab3, tab4, tab5, tab6, tab77777;  
       Group root = new Group();
       Scene scene = new Scene(root, 800, 600, Color.WHITE);
       TabPane tabPane = new TabPane();
