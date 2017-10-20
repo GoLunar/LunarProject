@@ -19,8 +19,8 @@ import javafx.stage.Stage;
  *
  * @author igold
  */
-public class conSchedule {
-     public static void conSchedule(){
+public class weekSchedule {
+     public static void weekSchedule(){
         // Window Creation
 		Stage stage1 = new Stage();
 		GridPane root1 = new GridPane();
@@ -81,7 +81,7 @@ public class conSchedule {
 		root1.getChildren().addAll();
 		Scene scene = new Scene(root1, 800, 600);
 		root1.setId("pane1");
-		stage1.setTitle("Concise Schedule");
+		stage1.setTitle("Weekly Schedule");
 		stage1.setScene(scene);
 		
 		stage1.show();

@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author igold
+ * @author Sadat
  */
 public class AddDrop {
 
@@ -29,19 +29,13 @@ public class AddDrop {
 		Label termSelect = new Label("Select a Term: ");
 
         // combo box for selecting terms
-                final ComboBox emailComboBox = new ComboBox();
-                emailComboBox.getItems().addAll(
+                final ComboBox termBox = new ComboBox();
+                termBox.getItems().addAll(
                     "Spring Semester 2018",
                     "Summer 2018"
                 );
                 
-                emailComboBox.setPromptText("Select a Term");       
-//        emailComboBox.valueProperty().addListener(new ChangeListener<String>() {
-//            @Override 
-//            public void changed(ObservableValue ov, String t, String t1) {                
-//                address = t1;                
-//            }    
-//        });
+                termBox.setPromptText("Select a Term");       
 
         //submit button to prompt term
                 Button submit = new Button();
@@ -49,21 +43,23 @@ public class AddDrop {
                 
         //alligns fields, buttons, labels
 		GridPane.setConstraints(termSelect, 10, 5);
-                GridPane.setConstraints(emailComboBox, 11, 5);
+                GridPane.setConstraints(termBox, 11, 5);
                 GridPane.setConstraints(submit, 11, 7);
                 
                 
 
 
-		root1.getChildren().addAll(termSelect, emailComboBox, submit);
+		root1.getChildren().addAll(termSelect, termBox, submit);
 		Scene scene = new Scene(root1, 400, 200);
 		root1.setId("pane1");
 		stage1.setTitle("Select a Term");
 		stage1.setScene(scene);
 		
 		stage1.show();
+                
+        //basically triggers button actions and also hides the term window.
                 submit.setOnAction((ActionEvent e) -> {
-                    if (emailComboBox.getValue() != null && !emailComboBox.getValue().toString().isEmpty()){
+                    if (termBox.getValue() != null && !termBox.getValue().toString().isEmpty()){
                         Classes();
                         stage1.hide();
                     }

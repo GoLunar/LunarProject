@@ -90,17 +90,27 @@ public class StudentMenu extends Application {
       Hyperlink classRegister = new Hyperlink();
       classRegister.setText("Add/Drop/Withdraw Classes");
       classRegister.setOnAction((ActionEvent event) -> {
-          AddDrop.AddDrop();
+          classLookUp.classLookUp();
       });
       
       Hyperlink classLookup= new Hyperlink();
       classLookup.setText("Look-Up Classes to Add");
+      classLookup.setOnAction((ActionEvent event) -> {
+          AddDrop.AddDrop();
+      });
+      
       
       Hyperlink conciseSch = new Hyperlink();
       conciseSch.setText("View Concise Student Schedule");
+      conciseSch.setOnAction((ActionEvent event) -> {
+          conSchedule.conSchedule();
+      });
       
       Hyperlink weeklySch = new Hyperlink();
       weeklySch.setText("View Weekly Student Schedule");
+      weeklySch.setOnAction((ActionEvent event) -> {
+          weekSchedule.weekSchedule();
+      });
       
        Hyperlink courseInfo = new Hyperlink();
       courseInfo.setText("View Basic Course Information");
@@ -114,7 +124,7 @@ public class StudentMenu extends Application {
       vbox.getChildren().add(conciseSch);
       vbox.getChildren().add(weeklySch);
       vbox.getChildren().add(courseInfo);
-      vbox.setPadding(new Insets(100,100,100,100));
+      vbox.setPadding(new Insets(50,50,50,50));
     
       tab2.setContent(vbox);
   }
@@ -218,9 +228,6 @@ public class StudentMenu extends Application {
       vbox.setAlignment(Pos.TOP_LEFT);
       tab6.setContent(vbox);
   }
-
-   
-
 
 
 }
