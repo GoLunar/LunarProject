@@ -1,5 +1,6 @@
 package golunarproject;
 
+import static golunarproject.AddDrop.Classes;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -11,12 +12,10 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Sadat
+ * @author sadat
  */
-public class AddDrop {
-
-    public static void AddDrop() {
-        
+public class weekSchedule {
+     public static void weekSchedule(){
         // Window Creation
 		Stage stage1 = new Stage();
 		GridPane root1 = new GridPane();
@@ -36,7 +35,6 @@ public class AddDrop {
                 
                 termBox.setPromptText("Select a Term");       
 
-        //submit button to prompt term
                 Button submit = new Button();
                 submit.setText("Submit");
                 
@@ -63,11 +61,11 @@ public class AddDrop {
                         stage1.hide();
                     }
                 });
+        
     }
     
-    
-    public static void Classes(){
-        // Window Creation
+    public static void lookup(){
+          // Window Creation
 		Stage stage1 = new Stage();
 		GridPane root1 = new GridPane();
 		root1.setPadding(new Insets(10, 10, 10, 10));
@@ -78,10 +76,9 @@ public class AddDrop {
 		root1.getChildren().addAll();
 		Scene scene = new Scene(root1, 800, 600);
 		root1.setId("pane1");
-		stage1.setTitle("Class Selection");
+		stage1.setTitle("Weekly Schedule");
 		stage1.setScene(scene);
 		
 		stage1.show();
     }
-    
 }

@@ -1,18 +1,30 @@
+
 package golunarproject;
 
 
 
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -23,17 +35,31 @@ import javafx.stage.Stage;
 
 
 
-public class StudentMenu{
-      static Tab tab, tab2, tab3, tab4, tab5, tab6;  
-      static Group root = new Group();
-      static Scene scene = new Scene(root, 800, 600, Color.WHITE);
-      static TabPane tabPane = new TabPane();
-      static BorderPane borderPane = new BorderPane();
+public class AdminMenu{
+    static Tab tab, tab2, tab3;  
+    static Group root = new Group();
+    static Scene scene = new Scene(root, 800, 600, Color.WHITE);
+    static TabPane tabPane = new TabPane();
+    static BorderPane borderPane = new BorderPane();
+    private TextField id;
+    private TextField firstname;
+    private TextField lastname;
+    private TextField email;
+    private DatePicker dob;
+    private TableView<Student> studenttable;
+    private TableColumn<Student, String> idcolumn;
+    private TableColumn<Student, String> firstnamecolumn;
+    private TableColumn<Student, String> lastnamecolumn;
+    private TableColumn<Student, String> emailcolumn;
+    private TableColumn<Student, String> dobcolumn;
+    private Button loadbutton;
+    private ObservableList<Student> data;
+    private sqliteConnection dc;
       
     /**
      *
      */
-    public static void start() {
+    public static void startA() {
     Stage stage = new Stage();
     stage.setTitle("GoLunar");       // name of program
     tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
@@ -42,9 +68,7 @@ public class StudentMenu{
       tab = new Tab("Main");    // name of tabs
       tab2 = new Tab("Registration");
       tab3 = new Tab("Student Records");
-      tab4 = new Tab("Student Accounts");
-      tab5 = new Tab("Financial Aid");
-      tab6 = new Tab("Personal Accounts");
+
       
       
           
@@ -55,12 +79,7 @@ public class StudentMenu{
       registration();
       tabPane.getTabs().add(tab3);
       records();
-      tabPane.getTabs().add(tab4);
-      accounts();
-      tabPane.getTabs().add(tab5);
-      financialAid();
-      tabPane.getTabs().add(tab6);
-      personalInfo();
+  
     
       
     // bind to take available space
@@ -151,79 +170,22 @@ public class StudentMenu{
       vbox.setAlignment(Pos.TOP_LEFT);
       tab3.setContent(vbox);
   }
-  public static void accounts(){
-      Hyperlink payment = new Hyperlink();
-      payment.setText("Payment");
-      
-      Hyperlink refundOpt = new Hyperlink();
-      refundOpt.setText("Refund Options");
-      
-      Hyperlink viewRefundSt= new Hyperlink();
-      viewRefundSt.setText("View Refund Status");
-      
-      Hyperlink tax = new Hyperlink();
-      tax.setText("Select Tax Year");
-      
-      
-      VBox vbox = new VBox(); 
-      vbox.getChildren().add(new Label("Student Accounts Menu"));
-      vbox.getChildren().add(payment);
-      vbox.getChildren().add(refundOpt);
-      vbox.getChildren().add(viewRefundSt);
-      vbox.getChildren().add(tax);
-      vbox.setAlignment(Pos.TOP_LEFT);
-      tab4.setContent(vbox);
-  }
-  
 
-  public static void financialAid(){
-      Hyperlink status = new Hyperlink();
-      status.setText("My Overall Status of Financial Aid");
-      status.setOnAction((ActionEvent event) -> {
-          Status.Status();
-      });
+  private void loadStudentData(){
+          try
+    {
+      Connection conn = sqliteConnection.dbconnector();
+      this.data = FXCollections.observableArrayList();
       
-      Hyperlink eligibility= new Hyperlink();
-      eligibility.setText("Eligibility");
-      
-      Hyperlink forms = new Hyperlink();
-      forms.setText("Financial Aid Forms");
-      
-      Hyperlink questions = new Hyperlink();
-      questions.setText("Financial Aid Questions");
-      
-      Hyperlink summerApp = new Hyperlink();
-      summerApp.setText("Summer Application");
-      
-      Hyperlink loans = new Hyperlink();
-      loans.setText("Loans");
-      
-      VBox vbox = new VBox();
-      vbox.getChildren().add(new Label("Financial Aid Menu"));
-      vbox.getChildren().add(status);
-      vbox.getChildren().add(eligibility);
-      vbox.getChildren().add(forms);
-      vbox.getChildren().add(questions);
-      vbox.getChildren().add(summerApp);
-      vbox.getChildren().add(loans);
-      vbox.setAlignment(Pos.TOP_LEFT);
-      tab5.setContent(vbox);
+      ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM students");
+      while (rs.next()) {
+        this.data.add(new Student(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+      }
+    }
+    catch (SQLException e)
+    {
+      System.err.println("Error " + e);
+    }
+    
   }
-  
-    public static void personalInfo(){
-      Hyperlink address = new Hyperlink();
-      address.setText("Change Address(es) and Phone(s)");
-      
-      Hyperlink changeInfo= new Hyperlink();
-      changeInfo.setText("Add or Update Emergency Contacts");
-      
-      VBox vbox = new VBox();
-      vbox.getChildren().add(new Label("Personal Information Menu"));
-      vbox.getChildren().add(address);
-      vbox.getChildren().add(changeInfo);
-      vbox.setAlignment(Pos.TOP_LEFT);
-      tab6.setContent(vbox);
-  }
-
-
 }
