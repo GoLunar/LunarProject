@@ -17,6 +17,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> dae1eb514d7fd51668d419ab3da29fa9305d28e5
 
 /**
  *
