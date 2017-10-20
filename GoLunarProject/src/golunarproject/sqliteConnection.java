@@ -1,26 +1,17 @@
 
 package golunarproject;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
-
-/**
- *
- * @author Sadat
- */
+import java.sql.*;
 public class sqliteConnection {
-    Connection c = null;
-    Statement s = null;
     
-    sqliteConnection(){
-        try{
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("JDBC:sqlite:GSUREGISTRATION2.sqlite");
-            System.out.println("Connection Success.");
-            c.close();
-        }catch (Exception e){
-            System.out.println("Error connecting to server." + e.getMessage());
-        }
+public static Connection dbconnector() {
+	try {
+		
+		Class.forName("org.sqlite.JDBC");
+		Connection conn =DriverManager.getConnection("jdbc:sqlite:C:\\Users\\igold\\Documents\\GitHub\\school.sqlite");
+				return conn;
+	} catch (Exception e) {
+		return null;
+	}
     }
 }

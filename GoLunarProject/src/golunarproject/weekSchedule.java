@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package golunarproject;
 
 import static golunarproject.AddDrop.Classes;
@@ -15,10 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-/**
- *
- * @author igold
- */
 public class weekSchedule {
      public static void weekSchedule(){
         // Window Creation
