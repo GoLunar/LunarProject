@@ -1,3 +1,4 @@
+
 package golunarproject;
 
 import static golunarproject.AddDrop.Classes;
@@ -10,10 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-/**
- *
- * @author sadat
- */
 public class weekSchedule {
 
     public static void weekSchedule() {
