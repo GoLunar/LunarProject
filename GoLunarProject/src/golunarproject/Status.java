@@ -1,6 +1,5 @@
 package golunarproject;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -17,7 +16,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-
 /**
  *
  * @author Sadat
@@ -25,8 +23,7 @@ import javafx.stage.Stage;
 public class Status {
 
     public static void Status() {
-        
 
-	}    
-	
+    }
+
 }
