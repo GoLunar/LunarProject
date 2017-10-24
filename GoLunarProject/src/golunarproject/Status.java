@@ -16,14 +16,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+//<<<<<<< HEAD
+//=======
+//<<<<<<< HEAD
 
-=======
->>>>>>> dae1eb514d7fd51668d419ab3da29fa9305d28e5
+//=======
+//>>>>>>> dae1eb514d7fd51668d419ab3da29fa9305d28e5
 
->>>>>>> a2ee13b2cfdf9927c91420e5774b1fc994f90c82
+//>>>>>>> a2ee13b2cfdf9927c91420e5774b1fc994f90c82
 /**
  *
  * @author Sadat
