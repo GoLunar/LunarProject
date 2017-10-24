@@ -1,4 +1,4 @@
-package GoLunarProject;
+package golunarproject;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
