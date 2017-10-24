@@ -1,7 +1,5 @@
 package golunarproject;
 
-import golunarproject.sqliteConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -29,7 +28,7 @@ public class Login extends Application {
 //        private final ComboBox userS = new ComboBox();
     Button login = new Button("login");
     TextField username = new TextField();
-    TextField password = new TextField();
+    PasswordField password = new PasswordField();
 
     public static void main(String args[]) {
         launch(args);
@@ -89,7 +88,6 @@ public class Login extends Application {
         Scene Bpane = new Scene(sp1, 200, 100);
         Button loginbut = new Button("OK");
         sp1.setId("hbox");
-        sp1.getStylesheets().add("Style.css");
         sp1.setTop(login1);
         sp1.setCenter(loginbut);
         sp1.setPrefSize(200, 100);
