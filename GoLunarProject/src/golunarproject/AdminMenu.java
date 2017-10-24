@@ -34,20 +34,20 @@ public class AdminMenu {
     static Scene scene = new Scene(root, 800, 600, Color.WHITE);
     static TabPane tabPane = new TabPane();
     static BorderPane borderPane = new BorderPane();
-    private TextField id;
-    private TextField firstname;
-    private TextField lastname;
-    private TextField email;
-    private DatePicker dob;
-    private TableView<Student> studenttable;
-    private TableColumn<Student, String> idcolumn;
-    private TableColumn<Student, String> firstnamecolumn;
-    private TableColumn<Student, String> lastnamecolumn;
-    private TableColumn<Student, String> emailcolumn;
-    private TableColumn<Student, String> dobcolumn;
-    private Button loadbutton;
-    private ObservableList<Student> data;
-    private sqliteConnection dc;
+//    private TextField id;
+//    private TextField firstname;
+//    private TextField lastname;
+//    private TextField email;
+//    private DatePicker dob;
+//    private TableView<Student> studenttable;
+//    private TableColumn<Student, String> idcolumn;
+//    private TableColumn<Student, String> firstnamecolumn;
+//    private TableColumn<Student, String> lastnamecolumn;
+//    private TableColumn<Student, String> emailcolumn;
+//    private TableColumn<Student, String> dobcolumn;
+//    private Button loadbutton;
+//    private ObservableList<Student> data;
+//    private sqliteConnection dc;
 
     /**
      *
@@ -155,18 +155,18 @@ public class AdminMenu {
         tab3.setContent(vbox);
     }
 
-    private void loadStudentData() {
-        try {
-            Connection conn = sqliteConnection.dbconnector();
-            this.data = FXCollections.observableArrayList();
-
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM students");
-            while (rs.next()) {
-                this.data.add(new Student(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
-            }
-        } catch (SQLException e) {
-            System.err.println("Error " + e);
-        }
-
-    }
+//    private void loadStudentData() {
+//        try {
+//            Connection conn = sqliteConnection.dbconnector();
+//            this.data = FXCollections.observableArrayList();
+//
+//            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM students");
+//            while (rs.next()) {
+//                this.data.add(new Student(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+//            }
+//        } catch (SQLException e) {
+//            System.err.println("Error " + e);
+//        }
+//
+//    }
 }

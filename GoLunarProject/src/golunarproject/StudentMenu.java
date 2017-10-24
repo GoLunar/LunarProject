@@ -115,7 +115,11 @@ public class StudentMenu {
     public static void records() {
         Hyperlink holds = new Hyperlink();
         holds.setText("View Holds");
-
+        holds.setOnAction((ActionEvent event) -> {
+            Holds.Holds();
+        });
+        
+        
         Hyperlink finalGrades = new Hyperlink();
         finalGrades.setText("View Final Grades");
 
@@ -127,6 +131,12 @@ public class StudentMenu {
 
         Hyperlink applyToGrad = new Hyperlink();
         applyToGrad.setText("Apply to Graduate");
+        
+        Hyperlink updateInfo = new Hyperlink();
+        updateInfo.setText("View Holds");
+        updateInfo.setOnAction((ActionEvent event) -> {
+           updateInfos.updateInfo();
+        });
 
         VBox vbox = new VBox();
         vbox.getChildren().add(new Label("Student Records Menu"));
@@ -135,6 +145,7 @@ public class StudentMenu {
         vbox.getChildren().add(myGPA);
         vbox.getChildren().add(myWithdraw);
         vbox.getChildren().add(applyToGrad);
+        vbox.getChildren().add(updateInfo);
         vbox.setAlignment(Pos.TOP_LEFT);
         tab3.setContent(vbox);
     }
