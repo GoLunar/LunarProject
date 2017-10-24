@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -49,20 +48,16 @@ public class Holds{
             stage1.setScene(bp2);
             stage1.show();
 
-            personal.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent e) {
-                    try {
-                        zeroresultset();
-                    } catch (SQLException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
-                    }
+            personal.setOnAction((ActionEvent e) -> {
+                try {
+                    zeroresultset();
+                } catch (SQLException e1) {
+                    // TODO Auto-generated catch block
+
                 }
             });
 
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

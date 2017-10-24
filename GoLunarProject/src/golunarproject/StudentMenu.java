@@ -119,7 +119,6 @@ public class StudentMenu {
             Holds.Holds();
         });
         
-        
         Hyperlink finalGrades = new Hyperlink();
         finalGrades.setText("View Final Grades");
 
@@ -133,7 +132,7 @@ public class StudentMenu {
         applyToGrad.setText("Apply to Graduate");
         
         Hyperlink updateInfo = new Hyperlink();
-        updateInfo.setText("View Holds");
+        updateInfo.setText("Update Student Information");
         updateInfo.setOnAction((ActionEvent event) -> {
            updateInfos.updateInfo();
         });
