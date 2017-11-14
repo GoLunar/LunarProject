@@ -1,4 +1,4 @@
-package golunarproject;
+
 
 import java.sql.*;
 
@@ -8,7 +8,8 @@ public class sqliteConnection {
         try {
 
             Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:./database/school.sqlite");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/myuniverese/Downloads/LunarProject-Sadat/GoLunarProject/database/school.sqlite");
+            //conn.setAutoCommit(false);
             return conn;
         } catch (Exception e) {
             return null;

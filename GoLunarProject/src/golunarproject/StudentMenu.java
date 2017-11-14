@@ -1,4 +1,4 @@
-package golunarproject;
+
 
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -27,8 +27,14 @@ public class StudentMenu {
     /**
      *
      */
-    public static void start() {
+    //public String username;
+    //public StudentMenu(String username) {
+    	//this.username=username;
+    //}
+    
+    public static void start(String username) {
         Stage stage = new Stage();
+         
         stage.setTitle("GoLunar");       // name of program
         tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
 
@@ -42,7 +48,7 @@ public class StudentMenu {
         tabPane.getTabs().add(tab);
         home();
         tabPane.getTabs().add(tab2);
-        registration();
+        registration(username);
         tabPane.getTabs().add(tab3);
         records();
         tabPane.getTabs().add(tab4);
@@ -70,43 +76,44 @@ public class StudentMenu {
 
     }
 
-    public static void registration() {
+    public static void registration(String username) {
 
         Hyperlink classRegister = new Hyperlink();
-        classRegister.setText("Add/Drop/Withdraw Classes");
+        classRegister.setText("Add/Withdraw Classes");
         classRegister.setOnAction((ActionEvent event) -> {
-            classLookUp.classLookUp();
+        	AddDrop.AddDrop(username);
+        	;
         });
 
         Hyperlink classLookup = new Hyperlink();
         classLookup.setText("Look-Up Classes to Add");
         classLookup.setOnAction((ActionEvent event) -> {
-            AddDrop.AddDrop();
+        	classLookUp.classLookUp(); 
         });
 
         Hyperlink conciseSch = new Hyperlink();
         conciseSch.setText("View Concise Student Schedule");
         conciseSch.setOnAction((ActionEvent event) -> {
-            conSchedule.conSchedule();
+            conSchedule.conSchedule(username);
         });
 
-        Hyperlink weeklySch = new Hyperlink();
-        weeklySch.setText("View Weekly Student Schedule");
-        weeklySch.setOnAction((ActionEvent event) -> {
-            weekSchedule.weekSchedule();
-        });
+        //Hyperlink weeklySch = new Hyperlink();
+       // weeklySch.setText("View Weekly Student Schedule");
+       // weeklySch.setOnAction((ActionEvent event) -> {
+        //    weekSchedule.weekSchedule();
+       // });
 
-        Hyperlink courseInfo = new Hyperlink();
+        /*Hyperlink courseInfo = new Hyperlink();
         courseInfo.setText("View Basic Course Information");
-
+*/
         //vertical box to allign
         VBox vbox = new VBox();
         vbox.getChildren().add(new Label("Registration Menu"));
         vbox.getChildren().add(classRegister);
         vbox.getChildren().add(classLookup);
         vbox.getChildren().add(conciseSch);
-        vbox.getChildren().add(weeklySch);
-        vbox.getChildren().add(courseInfo);
+        //vbox.getChildren().add(weeklySch);
+        //vbox.getChildren().add(courseInfo);
         vbox.setPadding(new Insets(50, 50, 50, 50));
 
         tab2.setContent(vbox);
@@ -115,7 +122,10 @@ public class StudentMenu {
     public static void records() {
         Hyperlink holds = new Hyperlink();
         holds.setText("View Holds");
-
+        holds.setOnAction((ActionEvent event) -> {
+            Holds.Holds();
+        });
+        
         Hyperlink finalGrades = new Hyperlink();
         finalGrades.setText("View Final Grades");
 
@@ -127,6 +137,12 @@ public class StudentMenu {
 
         Hyperlink applyToGrad = new Hyperlink();
         applyToGrad.setText("Apply to Graduate");
+        
+        Hyperlink updateInfo = new Hyperlink();
+        updateInfo.setText("Update Student Information");
+        updateInfo.setOnAction((ActionEvent event) -> {
+           updateInfos.updateInfo();
+        });
 
         VBox vbox = new VBox();
         vbox.getChildren().add(new Label("Student Records Menu"));
@@ -135,6 +151,7 @@ public class StudentMenu {
         vbox.getChildren().add(myGPA);
         vbox.getChildren().add(myWithdraw);
         vbox.getChildren().add(applyToGrad);
+        vbox.getChildren().add(updateInfo);
         vbox.setAlignment(Pos.TOP_LEFT);
         tab3.setContent(vbox);
     }
