@@ -1,7 +1,6 @@
-
 package golunarproject;
 
-import static golunarproject.AddDrop.Classes;
+
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -52,7 +51,7 @@ public class weekSchedule {
         //basically triggers button actions and also hides the term window.
         submit.setOnAction((ActionEvent e) -> {
             if (termBox.getValue() != null && !termBox.getValue().toString().isEmpty()) {
-                Classes();
+                //Classes();
                 stage1.hide();
             }
         });

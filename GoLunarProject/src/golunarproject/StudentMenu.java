@@ -1,5 +1,6 @@
 package golunarproject;
 
+
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -10,10 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 
 public class StudentMenu {
@@ -23,12 +26,21 @@ public class StudentMenu {
     static Scene scene = new Scene(root, 800, 600, Color.WHITE);
     static TabPane tabPane = new TabPane();
     static BorderPane borderPane = new BorderPane();
+    private static Image myImage;
 
     /**
      *
      */
-    public static void start() {
+    //public String username;
+    //public StudentMenu(String username) {
+    	//this.username=username;
+    //}
+    
+    public static void start(String username) {
         Stage stage = new Stage();
+        stage.setResizable(false);
+
+         
         stage.setTitle("GoLunar");       // name of program
         tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
 
@@ -42,7 +54,7 @@ public class StudentMenu {
         tabPane.getTabs().add(tab);
         home();
         tabPane.getTabs().add(tab2);
-        registration();
+        registration(username);
         tabPane.getTabs().add(tab3);
         records();
         tabPane.getTabs().add(tab4);
@@ -70,43 +82,44 @@ public class StudentMenu {
 
     }
 
-    public static void registration() {
+    public static void registration(String username) {
 
         Hyperlink classRegister = new Hyperlink();
-        classRegister.setText("Add/Drop/Withdraw Classes");
+        classRegister.setText("Add/Withdraw Classes");
         classRegister.setOnAction((ActionEvent event) -> {
-            classLookUp.classLookUp();
+        	AddDrop.AddDrop(username);
+        	;
         });
 
         Hyperlink classLookup = new Hyperlink();
         classLookup.setText("Look-Up Classes to Add");
         classLookup.setOnAction((ActionEvent event) -> {
-            AddDrop.AddDrop();
+        	classLookUp.classLookUp(); 
         });
 
         Hyperlink conciseSch = new Hyperlink();
         conciseSch.setText("View Concise Student Schedule");
         conciseSch.setOnAction((ActionEvent event) -> {
-            conSchedule.conSchedule();
+            conSchedule.conSchedule(username);
         });
 
-        Hyperlink weeklySch = new Hyperlink();
-        weeklySch.setText("View Weekly Student Schedule");
-        weeklySch.setOnAction((ActionEvent event) -> {
-            weekSchedule.weekSchedule();
-        });
+        //Hyperlink weeklySch = new Hyperlink();
+       // weeklySch.setText("View Weekly Student Schedule");
+       // weeklySch.setOnAction((ActionEvent event) -> {
+        //    weekSchedule.weekSchedule();
+       // });
 
-        Hyperlink courseInfo = new Hyperlink();
+        /*Hyperlink courseInfo = new Hyperlink();
         courseInfo.setText("View Basic Course Information");
-
+*/
         //vertical box to allign
         VBox vbox = new VBox();
         vbox.getChildren().add(new Label("Registration Menu"));
         vbox.getChildren().add(classRegister);
         vbox.getChildren().add(classLookup);
         vbox.getChildren().add(conciseSch);
-        vbox.getChildren().add(weeklySch);
-        vbox.getChildren().add(courseInfo);
+        //vbox.getChildren().add(weeklySch);
+        //vbox.getChildren().add(courseInfo);
         vbox.setPadding(new Insets(50, 50, 50, 50));
 
         tab2.setContent(vbox);
@@ -145,7 +158,7 @@ public class StudentMenu {
         vbox.getChildren().add(myWithdraw);
         vbox.getChildren().add(applyToGrad);
         vbox.getChildren().add(updateInfo);
-        vbox.setAlignment(Pos.TOP_LEFT);
+        vbox.setPadding(new Insets(50, 50, 50, 50));
         tab3.setContent(vbox);
     }
 
@@ -168,7 +181,7 @@ public class StudentMenu {
         vbox.getChildren().add(refundOpt);
         vbox.getChildren().add(viewRefundSt);
         vbox.getChildren().add(tax);
-        vbox.setAlignment(Pos.TOP_LEFT);
+        vbox.setPadding(new Insets(50, 50, 50, 50));
         tab4.setContent(vbox);
     }
 
@@ -202,7 +215,7 @@ public class StudentMenu {
         vbox.getChildren().add(questions);
         vbox.getChildren().add(summerApp);
         vbox.getChildren().add(loans);
-        vbox.setAlignment(Pos.TOP_LEFT);
+        vbox.setPadding(new Insets(50, 50, 50, 50));
         tab5.setContent(vbox);
     }
 
@@ -217,7 +230,7 @@ public class StudentMenu {
         vbox.getChildren().add(new Label("Personal Information Menu"));
         vbox.getChildren().add(address);
         vbox.getChildren().add(changeInfo);
-        vbox.setAlignment(Pos.TOP_LEFT);
+        vbox.setPadding(new Insets(50, 50, 50, 50));
         tab6.setContent(vbox);
     }
 

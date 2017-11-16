@@ -1,12 +1,13 @@
 package golunarproject;
 
-
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,12 +19,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class Holds{
+public class Hold{
 
-    public static void Holds() {
-        try {
+    public static void start() {
             Stage stage1 = new Stage();
-            stage1.setResizable(false);
             BorderPane root = new BorderPane();
             Scene scene = new Scene(root, 800, 600);
             stage1.setScene(scene);
@@ -52,17 +51,18 @@ public class Holds{
             stage1.show();
 
             personal.setOnAction((ActionEvent e) -> {
-                //zeroresultset();
-				System.out.println("temp");
+                try {
+                    zeroresultset();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Hold.class.getName()).log(Level.SEVERE, null, ex);
+                }
             });
 
-        } catch (Exception e) {
-        }
+       
     }
 
     public static void holdtrue() {
         Stage st1 = new Stage();
-        st1.setResizable(false);
         st1.setTitle("Hold");
         BorderPane sp1 = new BorderPane();
         Label loginacc = new Label("You have a Personal information Hold\n Please go to personal information section and update personal information");
@@ -86,7 +86,6 @@ public class Holds{
 
     public static void holdfalse() {
         Stage st1 = new Stage();
-        st1.setResizable(false);
         st1.setTitle("No Hold");
         BorderPane sp1 = new BorderPane();
         Label loginacc = new Label("You do not have any personal information holds");
@@ -106,9 +105,9 @@ public class Holds{
         loginbut.setOnAction((ActionEvent event) -> {
             st1.hide();
         });
-    }}
+    }
 
-   /* public static boolean zeroresultset() throws SQLException {
+    public static boolean zeroresultset() throws SQLException {
         //Connection connect = null;
         //connect = sqliteconnection.dbconnector();
         String displaystring = "select * FROM personal";
@@ -125,4 +124,4 @@ public class Holds{
         }
 
     }
-} */
+}

@@ -1,5 +1,6 @@
 package golunarproject;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +37,7 @@ public class Login extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
+        primaryStage.setResizable(false);
         GridPane root1 = new GridPane();
         root1.setAlignment(Pos.CENTER);
 
@@ -80,6 +81,7 @@ public class Login extends Application {
 
     public void loginsuccess() {
         Stage st1 = new Stage();
+        st1.setResizable(false);
         st1.setTitle("Login Succesful");
         BorderPane sp1 = new BorderPane();
         Label loginacc = new Label("Login Succesful");
@@ -108,6 +110,7 @@ public class Login extends Application {
 
     public void loginnotsuccess() {
         Stage st1 = new Stage();
+        st1.setResizable(false);
         BorderPane sp1 = new BorderPane();
         st1.setTitle("Login Unsuccesful");
         Label loginacc = new Label("Login Unsuccesful");
@@ -136,6 +139,7 @@ public class Login extends Application {
 
     private void adminLog() {
         Stage Stage1 = new Stage();
+        Stage1.setResizable(false);
         Stage1.setTitle("Login");
 
         // all created labels
@@ -194,7 +198,7 @@ public class Login extends Application {
                         loginsuccess();
                         System.out.println("Username and Password is Correct");
 
-                        AdminMenu.startA();
+                        AdminMenu.startA(dbUsername);
 
                         Stage1.hide();
 
@@ -208,6 +212,7 @@ public class Login extends Application {
 
     private void studentLog() {
         Stage Stage1 = new Stage();
+        Stage1.setResizable(false);
         Stage1.setTitle("Login");
 
         // all created labels
@@ -265,8 +270,8 @@ public class Login extends Application {
                     if (dbUsername.equals(username.getText()) && dbPassword.equals(password.getText())) {
                         loginsuccess();
                         System.out.println("Username and Password is Correct");
-
-                        StudentMenu.start();
+                        	StudentMenu sm=new StudentMenu();
+                        sm.start(dbUsername);
 
                         Stage1.hide();
 
