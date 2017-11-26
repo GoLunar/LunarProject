@@ -116,7 +116,7 @@ public class AddDrop {
         GridPane.setValignment(addbut, VPos.CENTER);
         GridPane.setHalignment(rembut, HPos.CENTER); // To align horizontally in the cell
         GridPane.setValignment(rembut, VPos.CENTER);
-       root1.getChildren().addAll(classes,classcrn,addbut,rembut,classes1,classcrnrem);
+        root1.getChildren().addAll(classes,classcrn,addbut,rembut,classes1,classcrnrem);
        
         Scene scene = new Scene(root1, 800, 600);
         root1.setId("pane1");

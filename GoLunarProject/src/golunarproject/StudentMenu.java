@@ -1,6 +1,8 @@
 package golunarproject;
 
 
+import java.sql.SQLException;
+
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,6 +21,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 
+
+/*
+*Student menu class brings up the Student menu gui. It has 
+*similar format to admin menu except it has many different
+*functions such as adding classes, viewing classes,
+*gpa, schedule, financial aids, payments, etc.
+*/
 public class StudentMenu {
 
     static Tab tab, tab2, tab3, tab4, tab5, tab6;
@@ -36,7 +45,15 @@ public class StudentMenu {
     	//this.username=username;
     //}
     
-    public static void start(String username) {
+    
+    
+/*
+*start method starts the main stage for the admin menu gui
+*Has 3 tabs. home, registration, records, accounts, financial aid,
+*personal info.
+*Uses borderpane, gridpane, to have proper layout for this menu.
+*/  
+    public static void start(String username) throws SQLException {
         Stage stage = new Stage();
         stage.setResizable(false);
 
@@ -56,9 +73,9 @@ public class StudentMenu {
         tabPane.getTabs().add(tab2);
         registration(username);
         tabPane.getTabs().add(tab3);
-        records();
+        records(username);
         tabPane.getTabs().add(tab4);
-        accounts();
+        accounts(username);
         tabPane.getTabs().add(tab5);
         financialAid();
         tabPane.getTabs().add(tab6);
@@ -73,7 +90,12 @@ public class StudentMenu {
         stage.setScene(scene);
         stage.show();
     }
-
+    
+    
+    
+/*
+*Calls home tab which just greets the student.
+*/
     public static void home() {
         HBox hbox = new HBox();//horizontal box to allign
         hbox.getChildren().add(new Label("Welcome to GoLunar!"));
@@ -81,7 +103,14 @@ public class StudentMenu {
         tab.setContent(hbox);
 
     }
-
+    
+    
+    
+    
+/*
+*Registration tab has many important functions such as,
+*Add/withdrawing classes, classlookup, and concise schedule.
+*/
     public static void registration(String username) {
 
         Hyperlink classRegister = new Hyperlink();
@@ -120,29 +149,51 @@ public class StudentMenu {
         vbox.getChildren().add(conciseSch);
         //vbox.getChildren().add(weeklySch);
         //vbox.getChildren().add(courseInfo);
+        vbox.setSpacing(5);
         vbox.setPadding(new Insets(50, 50, 50, 50));
 
         tab2.setContent(vbox);
     }
-
-    public static void records() {
-        Hyperlink holds = new Hyperlink();
+    
+    
+    
+/*
+*This method calls view final grades link, gpa, and
+*withdraw classes. It also has update student info for
+*quick changes with address, contact,etc. 
+*/
+    public static void records(String username) {
+        /*Hyperlink holds = new Hyperlink();
         holds.setText("View Holds");
         holds.setOnAction((ActionEvent event) -> {
             Holds.Holds();
         });
-        
+        */
         Hyperlink finalGrades = new Hyperlink();
         finalGrades.setText("View Final Grades");
+        finalGrades.setOnAction((ActionEvent event) -> {
+            viewGrade.viewGrade(username);
+        });
 
         Hyperlink myGPA = new Hyperlink();
         myGPA.setText("My Grade Point Average");
+        myGPA.setOnAction((ActionEvent event) -> {
+            try {
+				GPA.GPA(username);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        });
 
         Hyperlink myWithdraw = new Hyperlink();
         myWithdraw.setText("My Withdrawal History");
+        myWithdraw.setOnAction((ActionEvent event) -> {
+            Withdrawal.withdraw(username);
+        });
 
-        Hyperlink applyToGrad = new Hyperlink();
-        applyToGrad.setText("Apply to Graduate");
+        //Hyperlink applyToGrad = new Hyperlink();
+       // applyToGrad.setText("Apply to Graduate");
         
         Hyperlink updateInfo = new Hyperlink();
         updateInfo.setText("Update Student Information");
@@ -152,73 +203,122 @@ public class StudentMenu {
 
         VBox vbox = new VBox();
         vbox.getChildren().add(new Label("Student Records Menu"));
-        vbox.getChildren().add(holds);
+        //vbox.getChildren().add(holds);
         vbox.getChildren().add(finalGrades);
         vbox.getChildren().add(myGPA);
         vbox.getChildren().add(myWithdraw);
-        vbox.getChildren().add(applyToGrad);
+       // vbox.getChildren().add(applyToGrad);
         vbox.getChildren().add(updateInfo);
+        vbox.setSpacing(5);
         vbox.setPadding(new Insets(50, 50, 50, 50));
         tab3.setContent(vbox);
     }
-
-    public static void accounts() {
+/*
+*
+*
+*
+*
+*/
+    public static void accounts(String username) throws SQLException {
         Hyperlink payment = new Hyperlink();
         payment.setText("Payment");
+        payment.setOnAction((ActionEvent event) -> {
+            try {
+				Payments.paymentsdb(username);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			};
+         });
 
         Hyperlink refundOpt = new Hyperlink();
         refundOpt.setText("Refund Options");
+        refundOpt.setOnAction((ActionEvent event) -> {
+            RefundOps.refundOps(username);
+         });
 
         Hyperlink viewRefundSt = new Hyperlink();
         viewRefundSt.setText("View Refund Status");
-
-        Hyperlink tax = new Hyperlink();
-        tax.setText("Select Tax Year");
-
+        viewRefundSt.setOnAction((ActionEvent event) -> {
+            try {
+				RefundOps.status(username);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+         }); 
+       // Hyperlink tax = new Hyperlink();
+        //tax.setText("Select Tax Year");
         VBox vbox = new VBox();
         vbox.getChildren().add(new Label("Student Accounts Menu"));
         vbox.getChildren().add(payment);
         vbox.getChildren().add(refundOpt);
         vbox.getChildren().add(viewRefundSt);
-        vbox.getChildren().add(tax);
+        //vbox.getChildren().add(tax);
+        vbox.setSpacing(5);
         vbox.setPadding(new Insets(50, 50, 50, 50));
         tab4.setContent(vbox);
     }
-
+    
+    
+/*
+*
+*
+*
+*
+*/
     public static void financialAid() {
         Hyperlink status = new Hyperlink();
         status.setText("My Overall Status of Financial Aid");
-        status.setOnAction((ActionEvent event) -> {
+        status.setOnAction((ActionEvent financialstatus) -> {
             Status.Status();
         });
 
-        Hyperlink eligibility = new Hyperlink();
-        eligibility.setText("Eligibility");
-
         Hyperlink forms = new Hyperlink();
         forms.setText("Financial Aid Forms");
+        forms.setOnAction((ActionEvent financialaidforms) -> {
+        financialAidForms.Form();
+        });
 
         Hyperlink questions = new Hyperlink();
         questions.setText("Financial Aid Questions");
+        questions.setOnAction((ActionEvent financialquestions) -> {
+        financialAidQuestions.Question();
+        });
 
-        Hyperlink summerApp = new Hyperlink();
-        summerApp.setText("Summer Application");
-
-        Hyperlink loans = new Hyperlink();
-        loans.setText("Loans");
+//        Hyperlink appointment = new Hyperlink();
+//        appointment.setText("Enrollment Services Appointment");
+//        appointment.setOnAction((ActionEvent apptime) -> {
+//            ERAppointment.Appointment();
+//        });
+//        
+//        Hyperlink summerApp = new Hyperlink();
+//        summerApp.setText("Summer Application");
+//        summerApp.setOnAction((ActionEvent summerapplication) ->
+//        { summerApplication.Application();
+//        });
+//        
 
         VBox vbox = new VBox();
         vbox.getChildren().add(new Label("Financial Aid Menu"));
         vbox.getChildren().add(status);
-        vbox.getChildren().add(eligibility);
         vbox.getChildren().add(forms);
         vbox.getChildren().add(questions);
-        vbox.getChildren().add(summerApp);
-        vbox.getChildren().add(loans);
+//        vbox.getChildren().add(appointment);
+//        vbox.getChildren().add(summerApp);
+        vbox.setSpacing(5);
         vbox.setPadding(new Insets(50, 50, 50, 50));
+        vbox.setAlignment(Pos.TOP_LEFT);
         tab5.setContent(vbox);
     }
-
+    
+    
+/*
+*
+*
+*
+*
+*/
     public static void personalInfo() {
         Hyperlink address = new Hyperlink();
         address.setText("Change Address(es) and Phone(s)");
@@ -230,6 +330,7 @@ public class StudentMenu {
         vbox.getChildren().add(new Label("Personal Information Menu"));
         vbox.getChildren().add(address);
         vbox.getChildren().add(changeInfo);
+        vbox.setSpacing(5);
         vbox.setPadding(new Insets(50, 50, 50, 50));
         tab6.setContent(vbox);
     }

@@ -1,9 +1,6 @@
 package golunarproject;
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 15409133719662342421211373789b0dfe70163f
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

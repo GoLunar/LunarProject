@@ -103,10 +103,10 @@ public class studentAdd {
 		GridPane.setConstraints(emergencyPhone1, 23, 10);
                 GridPane.setConstraints(dob, 22, 11);
 		GridPane.setConstraints(dob1, 23, 11);
-                GridPane.setConstraints(register, 23, 14);
+                GridPane.setConstraints(register, 23, 12);
 
 		root1.getChildren().addAll(enroll, enroll2, fname, fname1, lname, lname1, email, email1, username, username1, password, password1, phone, phone1, emergencyPhone, emergencyPhone1, dob, dob1, register);
-		Scene scene = new Scene(root1, 800, 600);
+		Scene scene = new Scene(root1, 600, 600);
 		root1.setId("pane1");
 		// scene.getStylesheets().add("Style.css");
 		stage1.setTitle("Add Student Page");

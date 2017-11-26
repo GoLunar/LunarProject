@@ -10,7 +10,7 @@ public class sqliteConnection {
         try {
 
             Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:./database/school.sqlite");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:./database/schoolt.sqlite");
             //conn.setAutoCommit(false);
             return conn;
         } catch (Exception e) {

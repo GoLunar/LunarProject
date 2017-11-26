@@ -1,6 +1,8 @@
 package golunarproject;
 
 
+import static golunarproject.AdminMenu.root;
+import static golunarproject.conSchedule.con;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +21,7 @@ import javafx.util.Callback;
 
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -26,16 +29,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Sadat
- */
+
 public class classLookUp {
-	public static ObservableList<ObservableList> data;
+    public static ObservableList<ObservableList> data;
     public static TableView tableview;
     public static void classLookUp() {
         // Window Creation
-        /*Stage stage1 = new Stage();
+        Stage stage1 = new Stage();
         GridPane root1 = new GridPane();
         root1.setPadding(new Insets(10, 10, 10, 10));
         root1.setVgap(10);
@@ -48,7 +48,7 @@ public class classLookUp {
         final ComboBox termBox = new ComboBox();
         termBox.getItems().addAll(
                 "Spring Semester 2018",
-                "Summer 2018"
+                "Summer Semester 2018"
         );
 
         termBox.setPromptText("Select a Term");
@@ -72,39 +72,23 @@ public class classLookUp {
         //basically triggers button actions and also hides the term window.
         submit.setOnAction((ActionEvent e) -> {
             if (termBox.getValue() != null && !termBox.getValue().toString().isEmpty()) {
+                if (termBox.getValue().toString() == "Spring Semester 2018"){
+                    lookup();
+                }else if (termBox.getValue().toString() == "Summer Semester 2018"){
+                    
+                }
                 
                 stage1.hide();
             }
         });
-*/
-    	lookup();
+
     }
 
     public static void lookup() {
         // Window Creation
        Stage stage1 = new Stage();
        stage1.setResizable(false);
-       /* GridPane root1 = new GridPane();
-        root1.setPadding(new Insets(10, 10, 10, 10));
-        root1.setVgap(10);
-        root1.setHgap(5);
 
-        root1.getChildren().addAll();
-        Scene scene = new Scene(tableview, 800, 600);
-        root1.setId("pane1");
-        stage1.setTitle("Look-Up Classes");
-        stage1.setScene(scene);
-        tableview = new TableView();
-        buildData();
-
-        //Main Scene
-        //Scene scene1 = new Scene(tableview);        
-
-       // stage.setScene(scene);
-     */
-        
-        
-        
         stage1.show();
         
     	
@@ -115,8 +99,11 @@ public class classLookUp {
         catch(Exception e) {
         	e.printStackTrace();
         }
-        //Main Scene
-        Scene scene = new Scene(tableview);        
+       
+
+       
+        Scene scene = new Scene(tableview, 900, 700);
+        
        
         stage1.setScene(scene);
         scene.getWindow().centerOnScreen();
@@ -134,7 +121,7 @@ public class classLookUp {
         data = FXCollections.observableArrayList();
         try{
           c = sqliteConnection.dbconnector();
-          //SQL FOR SELECTING ALL OF CUSTOMER
+          //SQL FOR SELECTING ALL OF CLASS
           String SQL = "SELECT * from class";
           //ResultSet
           ResultSet rs = c.createStatement().executeQuery(SQL);
@@ -151,7 +138,7 @@ public class classLookUp {
               });
 
               tableview.getColumns().addAll(col); 
-              tableview.setPrefSize(1000.0, 400.0);
+              tableview.setPrefSize(800.0, 600.0);
              // tableview.setColumnResizePolicy(tableview.CONSTRAINED_RESIZE_POLICY);
               System.out.println("Column ["+i+"] ");
           }
@@ -178,9 +165,5 @@ public class classLookUp {
         	c.close();
         }
     }
-
-    
-    
-    
 
 }
