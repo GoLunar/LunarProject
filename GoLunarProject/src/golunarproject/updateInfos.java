@@ -1,11 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package golunarproject;
 
 
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -51,8 +51,8 @@ class updateInfos {
                 TextField pN = new TextField(); 
                 Label email = new Label("Email:");
                 TextField e = new TextField();
-                Label altEmail = new Label("Alternative Email");
-                TextField aE = new TextField(); 
+                Label dateofbirth = new Label("Date of Birth:");
+                TextField DOB = new TextField(); 
                 Label emergencyContact = new Label("Emergency Contact:");
                 emergencyContact.setFont(Font.font("Tahoma",FontWeight.BOLD, 15));
                 Label emergencyContactName = new Label("Name:");
@@ -74,8 +74,8 @@ class updateInfos {
                 grid.add(pN,1,5);
                 grid.add(email,0,6);
                 grid.add(e,1,6);
-                grid.add(altEmail,0,7);
-                grid.add(aE,1,7);
+                grid.add(dateofbirth,0,7);
+                grid.add(DOB,1,7);
                 grid.add(emergencyContact,0,8);
                 grid.add(emergencyContactName,0,9);
                 grid.add(emergencyContactPhoneNumber,0,10);
@@ -97,17 +97,44 @@ class updateInfos {
                 grid.add(actiontarget,0,15);
   
 		
-		Scene scene = new Scene(grid, 350, 490);
+		Scene scene = new Scene(grid, 400, 600);
 		grid.setId("pane1");
 		
                 stage1.setTitle("Personal Information");
 		stage1.setScene(scene);
 		stage1.show();
                 
-                btn.setOnAction(event -> {
+                btn.setOnAction((ActionEvent event) -> {
                    actiontarget.setFill(Color.FIREBRICK);
-                   actiontarget.setText("Information Updated");
-                });
-    }
+                   actiontarget.setText("Information Updated");               
+//Database connection    
+                try {
+
+                Connection connect;
+                connect = sqliteConnection.dbconnector();
+
+                String personalinformation = "INSERT into Info values(?,?,?,?,?,?,?,?)";
+                PreparedStatement prepstate;
+
+                prepstate = connect.prepareStatement(personalinformation);
+                prepstate.setString(1, fName.getText());
+                prepstate.setString(2, mName.getText());
+                prepstate.setString(3, lName.getText());
+                prepstate.setString(4, add.getText());
+                prepstate.setString(5, pN.getText());
+                prepstate.setString(6, e.getText());
+                prepstate.setString(7, eCN.getText());
+                prepstate.setString(8, eCPN.getText());
+                int result = prepstate.executeUpdate();
+
+              
+               
+   
+                    
+            } catch (SQLException a) {
+            }
+        });
+   
+       
+    }}
     
-}
