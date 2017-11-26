@@ -108,7 +108,7 @@ class updateInfos {
                    actiontarget.setFill(Color.FIREBRICK);
                    actiontarget.setText("Information Updated");               
 //Database connection    
-                try {
+               /* try {
 
                 Connection connect;
                 connect = sqliteConnection.dbconnector();
@@ -132,7 +132,7 @@ class updateInfos {
    
                     
             } catch (SQLException a) {
-            }
+            }*/
         });
    
        
