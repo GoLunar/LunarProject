@@ -1,5 +1,8 @@
 
 
+import golunarproject.Status;
+import golunarproject.financialAidForms;
+import golunarproject.financialAidQuestions;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -182,33 +185,42 @@ public class StudentMenu {
     public static void financialAid() {
         Hyperlink status = new Hyperlink();
         status.setText("My Overall Status of Financial Aid");
-        status.setOnAction((ActionEvent event) -> {
+        status.setOnAction((ActionEvent financialstatus) -> {
             Status.Status();
         });
 
-        Hyperlink eligibility = new Hyperlink();
-        eligibility.setText("Eligibility");
-
         Hyperlink forms = new Hyperlink();
         forms.setText("Financial Aid Forms");
+        forms.setOnAction((ActionEvent financialaidforms) -> {
+        financialAidForms.Forms();
+        });
 
         Hyperlink questions = new Hyperlink();
         questions.setText("Financial Aid Questions");
+        questions.setOnAction((ActionEvent financialquestions) -> {
+        financialAidQuestions.Question();
+        });
 
+        Hyperlink appointment = new Hyperlink();
+        appointment.setText("Enrollment Services Appointment");
+        appointment.setOnAction((ActionEvent apptime) -> {
+            ERAppointment.Appointment();
+        });
+        
         Hyperlink summerApp = new Hyperlink();
         summerApp.setText("Summer Application");
-
-        Hyperlink loans = new Hyperlink();
-        loans.setText("Loans");
+        summerApp.setOnAction((ActionEvent summerapplication) ->
+        { summerApplication.Application();
+        });
+        
 
         VBox vbox = new VBox();
         vbox.getChildren().add(new Label("Financial Aid Menu"));
         vbox.getChildren().add(status);
-        vbox.getChildren().add(eligibility);
         vbox.getChildren().add(forms);
         vbox.getChildren().add(questions);
+        vbox.getChildren().add(appointment);
         vbox.getChildren().add(summerApp);
-        vbox.getChildren().add(loans);
         vbox.setAlignment(Pos.TOP_LEFT);
         tab5.setContent(vbox);
     }
