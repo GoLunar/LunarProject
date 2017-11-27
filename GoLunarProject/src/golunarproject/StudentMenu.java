@@ -233,9 +233,8 @@ public class StudentMenu {
 
         Hyperlink refundOpt = new Hyperlink();
         refundOpt.setText("Refund Options");
-        refundOpt.setOnAction((ActionEvent event) -> {
-            RefundOps.refundOps(username);
-         });
+        refundOpt.setOnAction((ActionEvent refund) ->
+        {refundOption.refund();
 
         Hyperlink viewRefundSt = new Hyperlink();
         viewRefundSt.setText("View Refund Status");
@@ -319,20 +318,4 @@ public class StudentMenu {
 *
 *
 */
-    public static void personalInfo() {
-        Hyperlink address = new Hyperlink();
-        address.setText("Change Address(es) and Phone(s)");
-
-        Hyperlink changeInfo = new Hyperlink();
-        changeInfo.setText("Add or Update Emergency Contacts");
-
-        VBox vbox = new VBox();
-        vbox.getChildren().add(new Label("Personal Information Menu"));
-        vbox.getChildren().add(address);
-        vbox.getChildren().add(changeInfo);
-        vbox.setSpacing(5);
-        vbox.setPadding(new Insets(50, 50, 50, 50));
-        tab6.setContent(vbox);
-    }
-
-}
+   
