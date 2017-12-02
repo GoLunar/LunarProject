@@ -1,6 +1,7 @@
 package golunarproject;
 
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,33 +51,27 @@ public class AddDrop {
 
         // created labels
         /*Label termSelect = new Label("Select a Term: ");
-
         // combo box for selecting terms
         //final ComboBox termBox = new ComboBox();
         //termBox.getItems().addAll(
           //      "Spring Semester 2018",
           //      "Summer 2018"
        // );
-
         //termBox.setPromptText("Select a Term");
-
         //submit button to prompt term
         Button submit = new Button();
         submit.setText("Submit");
-
+// this is a test
         //alligns fields, buttons, labels
         //GridPane.setConstraints(termSelect, 10, 5);
         //GridPane.setConstraints(termBox, 11, 5);
        // GridPane.setConstraints(submit, 11, 7);
-
         //root1.getChildren().addAll(termSelect, termBox, submit);
         Scene scene = new Scene(root1, 400, 200);
         root1.setId("pane1");
         stage1.setTitle("Select a Term");
         stage1.setScene(scene);
-
         stage1.show();
-
         //basically triggers button actions and also hides the term window.
         submit.setOnAction((ActionEvent e) -> {
             if (termBox.getValue() != null && !termBox.getValue().toString().isEmpty()) {
@@ -85,9 +80,7 @@ public class AddDrop {
             }
         });
     }
-
    
-
 }*/
     Classes(username);
     
@@ -104,8 +97,10 @@ public class AddDrop {
         TextField classcrnrem = new TextField();
         Button addbut = new Button("add class");
         Button rembut = new Button("withdraw class");
+        Button viewclass = new Button("view available classes");
         root1.setHgap(5);
         root1.setVgap(10);
+        GridPane.setConstraints(viewclass, 41, 5);
         GridPane.setConstraints(classes, 41, 7);
         GridPane.setConstraints(classcrn,41,10);
         GridPane.setConstraints(addbut,41,15);
@@ -114,16 +109,20 @@ public class AddDrop {
         GridPane.setConstraints(rembut,41,28);
         GridPane.setHalignment(addbut, HPos.CENTER); // To align horizontally in the cell
         GridPane.setValignment(addbut, VPos.CENTER);
+        GridPane.setHalignment(viewclass, HPos.CENTER); // To align horizontally in the cell
+        GridPane.setValignment(viewclass, VPos.CENTER);
         GridPane.setHalignment(rembut, HPos.CENTER); // To align horizontally in the cell
         GridPane.setValignment(rembut, VPos.CENTER);
-        root1.getChildren().addAll(classes,classcrn,addbut,rembut,classes1,classcrnrem);
+       root1.getChildren().addAll(viewclass,classes,classcrn,addbut,rembut,classes1,classcrnrem);
        
         Scene scene = new Scene(root1, 800, 600);
         root1.setId("pane1");
         stage1.setTitle("Class Selection");
         stage1.setScene(scene);
         stage1.show();
-        
+        viewclass.setOnAction((ActionEvent refund) ->{
+            classLookUp.classLookUp();
+            });
         addbut.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				System.out.println("hello world");
@@ -157,7 +156,7 @@ public class AddDrop {
 							classaccepted();
 							
 							
-							String insertclass = "INSERT INTO classesadded (crn,student) Values (?,?)";
+							String insertclass = "REPLACE INTO classesadded (crn,student) Values (?,?)";
 						  
 						    System.out.println("yea it works ," +crnnum +" "+username);
 						    try {
@@ -246,6 +245,16 @@ public class AddDrop {
 							int result =prepstate1.executeUpdate();
 							System.out.println(result);
 							prepstate1.close();
+							String Signupstring1 = "Insert into withdraw values(?,?)";
+							PreparedStatement prepstate2 ;
+							
+							
+							prepstate2 = connect.prepareStatement(Signupstring1);
+							
+							prepstate2.setInt(1,crnnum);
+							prepstate2.setString(2,username);
+							int result1 =prepstate2.executeUpdate();
+							
 						    }
 						    catch(SQLException e){
 						    		System.out.println(e.getMessage());;
@@ -253,6 +262,14 @@ public class AddDrop {
 						}
 						
 					}
+					
+					
+					
+					
+					
+					
+					
+					
 					//connect.commit();
 					prepstate.close();
 					
