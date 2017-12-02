@@ -1,11 +1,6 @@
+
 package golunarproject;
 
-import static golunarproject.classLookUp.tableview;
-import static golunarproject.conSchedule.data;
-import static golunarproject.conSchedule.tableview;
-import static golunarproject.deleteStudent.deleteB;
-import static golunarproject.deleteStudent.list;
-import static golunarproject.deleteStudent.username;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,139 +9,98 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 
-/*
-* add grades class allows the teacher to add
-* grades for the classes they are teaching.
-* It will only show students for that specific
-* teachers class.
-*/
-public class addGrades {
+public class deleteTeacher {
+
     public static ObservableList<ObservableList> data;
-    public static TableView tableview;
+    
     public static ListView list;
-    public static TextField grade,student,crn;
+    public static TextField username;
  //   public static Label grade1,student1,crn1;
-    public static Button gradeb,update;
+    public static Button deleteB,update;
     public static ResultSet rs = null;
     public static Connection connect = sqliteConnection.dbconnector();
     public static PreparedStatement prepstate = null;
     
-    
-    /*
-    *starts the gui and also receives 3 int values from caller
-    *class.
-    */
-    public static void addGrades(int crnA, int crnB, int crnC) {
+    public static void removeTeacher() {
         // Window Creation
-       Stage stage = new Stage();
-       stage.setResizable(false);
+       Stage stage1 = new Stage();
+       stage1.setResizable(false);
 
         
-        stage.show();
+        
+        stage1.show();
         
         
-  //      grade1.setText("Grade: ");
-        grade = new TextField();
-        grade.setPromptText("Grade");
-        grade.setMaxWidth(200);
         
-        
-  //      student1.setText("StudentID: ");
-        student = new TextField();
-        student.setPromptText("Student ID");
-        student.setMaxWidth(200);
-        student.setEditable(false);
-        
+
   //      crn1.setText("CRN: ");
-        crn = new TextField();
-        crn.setPromptText("CRN");
-        crn.setMaxWidth(200);
-        crn.setEditable(false);
+        username = new TextField();
+        username.setPromptText("Teacher ID");
+        username.setMaxWidth(200);
+        username.setEditable(false);
         
-        gradeb = new Button("Grade");
+        deleteB = new Button("Delete");
         
-        tableview = new TableView();
-        list = new ListView();
         
+    
+
         
         try {
-    		buildData(crnA,crnB,crnC);
+    		buildData();
         }
         catch(Exception e) {
         	e.printStackTrace();
         }
-    	
-        
-
-
-        //gridpane
+        //Main Scene
         GridPane root = new GridPane();
-        
-        //vertical boxes
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(20, 20, 20, 20));
         vbox.setSpacing(10);
-        vbox.getChildren().addAll(student,crn, grade, gradeb);
+        vbox.getChildren().addAll(username,deleteB);
         
-        
-        
+
         root.getChildren().addAll(list, vbox);
         root.setPadding(new Insets(20, 20, 20, 20));
         root.setVgap(15);
         root.setHgap(15);
         
-        
-        //allignment
+
         GridPane.setConstraints(list, 1, 0);
+        //GridPane.setConstraints(vbox1, 3, 0);
         GridPane.setConstraints(vbox, 2, 0);
-        GridPane.setConstraints(tableview,3,0);
         
 
         
         Scene scene = new Scene(root, 500, 500);
 
        
-        stage.setScene(scene);
-        stage.show();
-
-        
-
-        
+        stage1.setScene(scene);
+        stage1.show();
+    	
+    	
+    	
+    	
     }
-    
-    
-    /*
-    *builds the data to store in tableview/list
-    *Also helps filter list and such
-    */
-    public static void buildData(int crnA, int crnB, int crnC) throws SQLException{
+    public static void buildData() throws SQLException{
         Connection c=null ;
         data = FXCollections.observableArrayList();
-        
         
         try{
           c = sqliteConnection.dbconnector();
           //SQL FOR SELECTING ALL OF CLASS
-          String SQL = "SELECT * FROM classesadded where crn='"+crnA+"'";
-          
+          String SQL = "SELECT * FROM Teacher";
           //ResultSet
           rs = c.createStatement().executeQuery(SQL);
 
@@ -154,7 +108,6 @@ public class addGrades {
           for(int i=0; i<rs.getMetaData().getColumnCount(); i++){
               //We are using non property style for making dynamic table
               final int j = i;                
-              
               TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
               col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                    
                   public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {                                                                                              
@@ -162,22 +115,17 @@ public class addGrades {
                   }                    
               });
 
-              tableview.getColumns().addAll(col); 
-
               System.out.println("Column ["+i+"] ");
-              
           }
 
-          //stores data in a row
+          
           while(rs.next()){
               //Iterate Row
               ObservableList<String> row = FXCollections.observableArrayList();
-              
               for(int i=1 ; i<=rs.getMetaData().getColumnCount(); i++){
                   //Iterate Column
                   row.add(rs.getString(i));
               }
-              
               System.out.println("Row [1] added "+row );
               
               data.add(row);
@@ -185,49 +133,36 @@ public class addGrades {
 
           }
 
-          tableview.setItems(data);
           
           //FINALLY ADDED TO ListView
-          
+          list = new ListView();
           
           for (int i = 0; i < data.size(); i++){
-              String x = (String)data.get(i).get(1);
-              String y = (String)data.get(i).get(0);
-              list.getItems().add(x+", "+y);
+                list.getItems().add((String)data.get(i).get(0));
            }
           
           
-          list.setOnMouseClicked( e ->{
-              
+          list.setOnMouseClicked(e ->{
               
           try{
-              
-               String s= (String) list.getSelectionModel().getSelectedItem();
-                
-               String[] parts = s.split(", ");
-               String part1 = parts[0]; // student id
-               String part2 = parts[1]; // crn
-                
-               int n = Integer.parseInt(part2);
-               System.out.println(n);
+                String s= (String) list.getSelectionModel().getSelectedItem();
+
+                System.out.println(s);
 
 
-                String query = "select * from classesadded where student= ? and crn= ?";
+                String query = "select * from Teacher where username = ?";
                
                 prepstate = connect.prepareStatement(query);
-                prepstate.setString(1, part1);
-                prepstate.setInt(2, n);
+                prepstate.setString(1, s);
                 rs = prepstate.executeQuery();
                 
 
                // while(rs.next()){
-                    crn.setText(rs.getString("crn"));
-                    student.setText(rs.getString("student"));
-                    grade.setText(rs.getString("grade"));
-               // }
+                    username.setText(rs.getString("username"));
+
                 
                 
-               prepstate.close();
+                prepstate.close();
      
                 
             }catch(Exception exc){
@@ -237,16 +172,11 @@ public class addGrades {
          
           });
           
-          
-          //grade button action
-          gradeb.setOnAction(e ->{
+          deleteB.setOnAction(e ->{
             try{
-                
-                String query = "update classesadded set grade=? where student='"+student.getText()+"' and crn='"+crn.getText()+"' ";
+                String query = "delete from Teacher where username=?";
                 prepstate = connect.prepareStatement(query);
-
-                prepstate.setString(1, grade.getText());
-                
+                prepstate.setString(1, username.getText());
 
                 prepstate.execute();
                 prepstate.close();
@@ -257,11 +187,13 @@ public class addGrades {
             }
         });
           
+          
+        
+
         }catch(Exception exe){
                   
          }
-        
     }
  
-    
+
 }

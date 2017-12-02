@@ -34,6 +34,7 @@ import javafx.stage.Stage;
 public class Login extends Application {
 // string to store username and database entered by the user
     String dbUsername, dbPassword;
+    int dbCrn, dbCrn2, dbCrn3;
 //  private final ComboBox userS = new ComboBox();
     
 // button for login
@@ -72,14 +73,17 @@ public class Login extends Application {
         // necessary buttons for student/admin
         Button studentx = new Button("Student Login");
         Button adminx = new Button("Admin Login");
+        Button teacherx = new Button("Teacher Login");
 
         //font size and type change
         studentx.setStyle("-fx-font-size: 11pt;");
         adminx.setStyle("-fx-font-size: 11pt;");
+        teacherx.setStyle("-fx-font-size: 11pt;");
         
         //gridpane constraint to allign layout
         GridPane.setConstraints(studentx, 0, 2);
-        GridPane.setConstraints(adminx, 0, 4);
+        GridPane.setConstraints(adminx, 0, 3);
+        GridPane.setConstraints(teacherx, 0, 4);
         
         //vertical box for vertical allignment within gridpane
         VBox vbox = new VBox();
@@ -89,9 +93,10 @@ public class Login extends Application {
         //vertical box configuration with width
         studentx.setMinWidth(vbox.getPrefWidth());
         adminx.setMinWidth(vbox.getPrefWidth());
+        teacherx.setMinWidth(vbox.getPrefWidth());
         
         //ading buttons to the vertical box
-        vbox.getChildren().addAll(studentx, adminx);
+        vbox.getChildren().addAll(studentx, adminx, teacherx);
         
         //adding vertical box to gridpane
         root1.getChildren().addAll(vbox);
@@ -117,6 +122,12 @@ public class Login extends Application {
             adminLog();
             primaryStage.close();
         });
+        
+        teacherx.setOnAction((ActionEvent event) -> {
+            teacherLog();
+            primaryStage.close();
+        });
+
 
     }
     
@@ -388,6 +399,90 @@ public class Login extends Application {
                     }
                 }
 
+            } catch (SQLException e) {
+            }
+        });
+
+    }
+    
+    
+       private void teacherLog() {
+        
+        Stage Stage1 = new Stage();
+        Stage1.setResizable(false);
+        Stage1.setTitle("Login");
+
+        // all created labels
+        Label loginpage = new Label("Teacher Login Page");
+        
+        Label usernamelabel = new Label("Username: ");
+        Label passwordlabel = new Label("Password: ");
+        
+        Font f1 = new Font("Arial", 16);
+        
+        usernamelabel.setFont(f1);
+        passwordlabel.setFont(f1);
+        loginpage.setFont(f1);
+
+        // gridpane layout
+        GridPane root = new GridPane();
+        root.setPadding(new Insets(10, 10, 10, 10));
+        root.setVgap(10);
+        root.setHgap(10);
+        
+        // gridpane constraints for alligning layout
+        GridPane.setConstraints(loginpage, 5, 1);
+        GridPane.setConstraints(usernamelabel, 5, 3);
+        GridPane.setConstraints(username, 6, 3);
+        GridPane.setConstraints(passwordlabel, 5, 4);
+        GridPane.setConstraints(password, 6, 4);
+        GridPane.setConstraints(login, 6, 5);
+
+        root.setId("pane");
+        root.getChildren().addAll(loginpage, username, usernamelabel, passwordlabel, password, login);
+        Scene scene = new Scene(root, 400, 200);
+
+        Stage1.setScene(scene);
+        Stage1.show();
+
+        login.setOnAction((ActionEvent event) -> {
+            try {
+
+                Connection connect;
+                connect = sqliteConnection.dbconnector();
+
+                String usernameandpassword = "SELECT * from Teacher where username = ? and password= ?";
+                PreparedStatement prepstate;
+
+                prepstate = connect.prepareStatement(usernameandpassword);
+                
+                prepstate.setString(1, username.getText());
+                prepstate.setString(2, password.getText());
+
+                ResultSet reset = prepstate.executeQuery();
+                
+                if (!reset.isBeforeFirst()) {
+                    System.out.println("username not found");
+                    loginnotsuccess();
+                }
+
+                while (reset.next()) {
+                    dbUsername = reset.getString("username");
+                    dbPassword = reset.getString("password");
+                    dbCrn = reset.getInt("crn");
+                    dbCrn2 = reset.getInt("crn2");
+                    dbCrn3 = reset.getInt("crn3");
+
+                    if (dbUsername.equals(username.getText()) && dbPassword.equals(password.getText())) {
+                        loginsuccess();
+                        System.out.println("Username and Password is Correct");
+
+                        teacherMenu.startA(dbCrn,dbCrn2,dbCrn3);
+
+                        Stage1.hide();
+
+                    }
+                }
             } catch (SQLException e) {
             }
         });

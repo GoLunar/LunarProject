@@ -37,13 +37,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+public class teacherMenu {
+
 /*
-*Admin menu class brings up the admin menu gui. It has 
+*teacher menu class brings up the teacher menu gui. It has 
 *similar format to student menu except it has many different
-*functions such as adding students, removing students,
-*grading, and viewing student list.
+*functions such as adding grades, etc.
+*
 */
-public class AdminMenu {
+
 // tabs for menu
     static Tab tab, tab2, tab3;
     
@@ -62,7 +64,7 @@ public class AdminMenu {
 *Has 3 tabs. Main, registration, and student records.
 *Uses borderpane, gridpane, to have proper layout for this menu.
 */
-    public static void startA(String username) {
+    public static void startA(int crn,int crn2,int crn3) {
         Stage stage = new Stage();
         stage.setResizable(false);
         stage.setTitle("GoLunar");       // name of program
@@ -79,10 +81,10 @@ public class AdminMenu {
 
         tabPane.getTabs().add(tab);
         home();
-        tabPane.getTabs().add(tab2);
-        registration(username);
+//        tabPane.getTabs().add(tab2);
+//        registration();
         tabPane.getTabs().add(tab3);
-        records();
+        records(crn,crn2,crn3);
 
         // bind to take available space
         borderPane.prefHeightProperty().bind(scene.heightProperty());
@@ -112,65 +114,40 @@ public class AdminMenu {
     }
     
     
-/*
-*Registration tab, it is the most important tab
-*for the admin menu. It includes the add student
-*function, for adding students into the database.
-*It also has Remove students function.
-*/
-    public static void registration(String username) {
-
-    	Hyperlink addStudent = new Hyperlink();
-        addStudent.setText("Add Student");
-        addStudent.setOnAction((ActionEvent event) -> {
-            studentAdd.startaddStudent();
-        });
-        
-        Hyperlink remStudents = new Hyperlink();
-        remStudents.setText("Remove Students");
-        remStudents.setOnAction((ActionEvent event) -> {
-            deleteStudent.removeStudent();
-        });
-        
-        Hyperlink addTeacher = new Hyperlink();
-        addTeacher.setText("Add Teacher");
-        addTeacher.setOnAction((ActionEvent event) -> {
-            teacherAdd.startaddTeacher();
-        });
-        
-        Hyperlink remTeacher = new Hyperlink();
-        remTeacher.setText("Remove Teacher");
-        remTeacher.setOnAction((ActionEvent event) -> {
-            deleteTeacher.removeTeacher();
-        });
-        
-        Hyperlink addClass = new Hyperlink();
-        addClass.setText("Add Class");
-        addClass.setOnAction((ActionEvent event) -> {
-            classAdd.startaddClass();
-        });
-        
-
-        //vertical box to allign
-        VBox vbox = new VBox();
-        vbox.getChildren().add(new Label("Registration Menu"));
-        
-        vbox.getChildren().add(addStudent);
-        
-        vbox.getChildren().add(remStudents);
-        
-        vbox.getChildren().add(addTeacher);
-        
-        vbox.getChildren().add(remTeacher);
-        
-        vbox.getChildren().add(addClass);
-        
-        vbox.setSpacing(5);
-
-        vbox.setPadding(new Insets(50, 50, 50, 50));
-
-        tab2.setContent(vbox);
-    }
+///*
+//*Registration tab, it is the most important tab
+//*for the admin menu. It includes the add student
+//*function, for adding students into the database.
+//*It also has Remove students function.
+//*/
+//    public static void registration() {
+//
+//    	Hyperlink addStudent = new Hyperlink();
+//        addStudent.setText("Add Student");
+//        addStudent.setOnAction((ActionEvent event) -> {
+//            studentAdd.startaddStudent();
+//        });
+//        
+//        Hyperlink remStudents = new Hyperlink();
+//        remStudents.setText("Remove Students");
+//        remStudents.setOnAction((ActionEvent event) -> {
+//            deleteStudent.removeStudent();
+//        });
+//
+//        //vertical box to allign
+//        VBox vbox = new VBox();
+//        vbox.getChildren().add(new Label("Registration Menu"));
+//        
+//        vbox.getChildren().add(addStudent);
+//        
+//        vbox.getChildren().add(remStudents);
+//        
+//        vbox.setSpacing(5);
+//
+//        vbox.setPadding(new Insets(50, 50, 50, 50));
+//
+//        tab2.setContent(vbox);
+//    }
     
     
 /*
@@ -180,7 +157,7 @@ public class AdminMenu {
 *Which is can be used to show gpa, and also calculate
 *student payments.
 */
-    public static void records() {
+    public static void records(int crn, int crn2, int crn3) {
     	
         Hyperlink viewStudents = new Hyperlink();
         viewStudents.setText("View Students");
@@ -189,17 +166,23 @@ public class AdminMenu {
         });
         
         
-     
+        Hyperlink addGrade = new Hyperlink();
+        addGrade.setText("Add Student Grades");
+        addGrade.setOnAction((ActionEvent event) -> {
+            addGrades.addGrades(crn,crn2,crn3);
+        });
 
         VBox vbox = new VBox();
         vbox.getChildren().add(new Label("Student Records Menu"));
 
         vbox.getChildren().add(viewStudents);
+        vbox.getChildren().add(addGrade);
         vbox.setSpacing(5);
         vbox.setPadding(new Insets(50, 50, 50, 50));
         tab3.setContent(vbox);
         
     }
+
+
+
 }
-
-
