@@ -1,3 +1,5 @@
+
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +31,7 @@ public static void withdraw(String username) {
     root1.getChildren().addAll();
     //Scene scene = new Scene(root1, 800, 600);
     root1.setId("pane1");
-    stage1.setTitle("Concise Schedule");
+    stage1.setTitle("Withdrawal History");
     //stage1.setScene(scene);
 
     stage1.show();
@@ -76,7 +78,7 @@ public static void withdraw(String username) {
           });
 
           tableview.getColumns().addAll(col); 
-          col.prefWidthProperty().bind(tableview.widthProperty().multiply(0.3));
+
           //tableview.setColumnResizePolicy(tableview.CONSTRAINED_RESIZE_POLICY);
           tableview.setPrefSize(1000.0, 400.0);
           //ableview.get

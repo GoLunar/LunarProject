@@ -30,58 +30,11 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 
-public class classLookUp {
+public class studentList {
     public static ObservableList<ObservableList> data;
     public static TableView tableview;
-    public static void classLookUp() {
-        // Window Creation
-        Stage stage1 = new Stage();
-        GridPane root1 = new GridPane();
-        root1.setPadding(new Insets(10, 10, 10, 10));
-        root1.setVgap(10);
-        root1.setHgap(5);
-
-        // created labels
-        Label termSelect = new Label("Select a Term: ");
-
-        // combo box for selecting terms
-        final ComboBox termBox = new ComboBox();
-        termBox.getItems().addAll(
-                "Spring Semester 2018",
-                "Summer Semester 2018"
-        );
-
-        termBox.setPromptText("Select a Term");
-
-        Button submit = new Button();
-        submit.setText("Submit");
-
-        //alligns fields, buttons, labels
-        GridPane.setConstraints(termSelect, 10, 5);
-        GridPane.setConstraints(termBox, 11, 5);
-        GridPane.setConstraints(submit, 11, 7);
-
-        root1.getChildren().addAll(termSelect, termBox, submit);
-        Scene scene = new Scene(root1, 400, 200);
-        root1.setId("pane1");
-        stage1.setTitle("Select a Term");
-        stage1.setScene(scene);
-
-        stage1.show();
-
-        //basically triggers button actions and also hides the term window.
-        submit.setOnAction((ActionEvent e) -> {
-            if (termBox.getValue() != null && !termBox.getValue().toString().isEmpty()) {
-                if (termBox.getValue().toString() == "Spring Semester 2018"){
-                    lookup();
-                }else if (termBox.getValue().toString() == "Summer Semester 2018"){
-                    
-                }
-                
-                stage1.hide();
-            }
-        });
-
+    public static void start() {
+        lookup();
     }
 
     public static void lookup() {
@@ -89,6 +42,8 @@ public class classLookUp {
        Stage stage1 = new Stage();
        stage1.setResizable(false);
 
+        
+        
         stage1.show();
         
     	
@@ -99,11 +54,10 @@ public class classLookUp {
         catch(Exception e) {
         	e.printStackTrace();
         }
-       
-
-       
-        Scene scene = new Scene(tableview, 900, 700);
-        
+        //Main Scene
+       // Group root = new Group();
+        Scene scene = new Scene(tableview, 800, 600);
+       // root.getChildren().add(tableview);
        
         stage1.setScene(scene);
         scene.getWindow().centerOnScreen();
@@ -122,7 +76,7 @@ public class classLookUp {
         try{
           c = sqliteConnection.dbconnector();
           //SQL FOR SELECTING ALL OF CLASS
-          String SQL = "SELECT * from class";
+          String SQL = "SELECT * from School";
           //ResultSet
           ResultSet rs = c.createStatement().executeQuery(SQL);
 
@@ -138,8 +92,8 @@ public class classLookUp {
               });
 
               tableview.getColumns().addAll(col); 
-              tableview.setPrefSize(800.0, 600.0);
-             // tableview.setColumnResizePolicy(tableview.CONSTRAINED_RESIZE_POLICY);
+              tableview.setPrefSize(1000.0, 400.0);
+
               System.out.println("Column ["+i+"] ");
           }
 
@@ -166,4 +120,11 @@ public class classLookUp {
         }
     }
 
+    
+    
+    
+
 }
+
+
+

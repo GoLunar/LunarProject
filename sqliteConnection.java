@@ -10,8 +10,8 @@ public class sqliteConnection {
         try {
 
             Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/myuniverese/Downloads/LunarProject-Sadat/GoLunarProject/database/school.sqlite");
-           // conn.setAutoCommit(true);
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/myuniverese/Desktop/schoolt.sqlite");
+            //conn.setAutoCommit(false);
             return conn;
         } catch (Exception e) {
             return null;

@@ -1,81 +1,60 @@
 
 
-import javafx.beans.property.SimpleStringProperty;
+
+    import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Student {
 
     private final StringProperty ID;
-    private final StringProperty firstName;
-    private final StringProperty lastName;
-    private final StringProperty email;
-    private final StringProperty DOB;
+    private final StringProperty crn;
+    private final StringProperty grade;
 
-    public Student(String id, String firstname, String lastname, String email, String dob) {
+    public Student(String id, String firstname,String grade) {
         this.ID = new SimpleStringProperty(id);
-        this.firstName = new SimpleStringProperty(firstname);
-        this.lastName = new SimpleStringProperty(lastname);
-        this.email = new SimpleStringProperty(email);
-        this.DOB = new SimpleStringProperty(dob);
+        this.crn = new SimpleStringProperty(firstname);
+
+        this.grade = new SimpleStringProperty(grade);
     }
 
     public String getID() {
         return (String) this.ID.get();
     }
 
-    public String getFirstName() {
-        return (String) this.firstName.get();
+    public String getCRN() {
+        return (String) this.crn.get();
+    }
+    public String getGrade() {
+        return (String) this.grade.get();
     }
 
-    public String getLastName() {
-        return (String) this.lastName.get();
-    }
 
-    public String getEmail() {
-        return (String) this.email.get();
-    }
-
-    public String getDOB() {
-        return (String) this.DOB.get();
-    }
 
     public void setID(String value) {
         this.ID.set(value);
     }
 
     public void setFirstName(String value) {
-        this.firstName.set(value);
+        this.crn.set(value);
     }
 
-    public void setLastName(String value) {
-        this.lastName.set(value);
-    }
-
-    public void setEmail(String value) {
-        this.email.set(value);
-    }
-
-    public void setDOB(String value) {
-        this.DOB.set(value);
+    
+     public void setGrade(String value) {
+        this.grade.set(value);
     }
 
     public StringProperty idProperty() {
         return this.ID;
     }
 
-    public StringProperty firstNameProperty() {
-        return this.firstName;
+    public StringProperty firstCRNProperty() {
+        return this.crn;
     }
 
-    public StringProperty lastNameProperty() {
-        return this.lastName;
-    }
-
-    public StringProperty emailProperty() {
-        return this.email;
-    }
-
-    public StringProperty dobProperty() {
-        return this.DOB;
+    
+     public StringProperty gradeProperty() {
+        return this.grade;
     }
 }
+
+

@@ -1,4 +1,5 @@
 
+
 import java.sql.Connection;
 import java.util.regex.*;
 import java.sql.PreparedStatement;
@@ -57,7 +58,7 @@ public class Payments {
 		
 		prepstate.close();
 		connect.close();
-		tuition = sum * 12093;
+		tuition = sum * 1000;
 		System.out.println("the sum is :" + tuition + ".00");
 		Stage stage1 = new Stage();
 		BorderPane root1 = new BorderPane();

@@ -104,8 +104,10 @@ public class AddDrop {
         TextField classcrnrem = new TextField();
         Button addbut = new Button("add class");
         Button rembut = new Button("withdraw class");
+        Button viewclass = new Button("view available classes");
         root1.setHgap(5);
         root1.setVgap(10);
+        GridPane.setConstraints(viewclass, 41, 5);
         GridPane.setConstraints(classes, 41, 7);
         GridPane.setConstraints(classcrn,41,10);
         GridPane.setConstraints(addbut,41,15);
@@ -114,16 +116,20 @@ public class AddDrop {
         GridPane.setConstraints(rembut,41,28);
         GridPane.setHalignment(addbut, HPos.CENTER); // To align horizontally in the cell
         GridPane.setValignment(addbut, VPos.CENTER);
+        GridPane.setHalignment(viewclass, HPos.CENTER); // To align horizontally in the cell
+        GridPane.setValignment(viewclass, VPos.CENTER);
         GridPane.setHalignment(rembut, HPos.CENTER); // To align horizontally in the cell
         GridPane.setValignment(rembut, VPos.CENTER);
-       root1.getChildren().addAll(classes,classcrn,addbut,rembut,classes1,classcrnrem);
+       root1.getChildren().addAll(viewclass,classes,classcrn,addbut,rembut,classes1,classcrnrem);
        
         Scene scene = new Scene(root1, 800, 600);
         root1.setId("pane1");
         stage1.setTitle("Class Selection");
         stage1.setScene(scene);
         stage1.show();
-        
+        viewclass.setOnAction((ActionEvent refund) ->{
+            classLookUp.classLookUp();
+            });
         addbut.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				System.out.println("hello world");

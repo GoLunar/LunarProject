@@ -1,3 +1,4 @@
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,7 +39,7 @@ public class viewGrade {
 	        root1.getChildren().addAll();
 	        //Scene scene = new Scene(root1, 800, 600);
 	        root1.setId("pane1");
-	        stage1.setTitle("Concise Schedule");
+	        stage1.setTitle("View Grades");
 	        //stage1.setScene(scene);
 
 	        stage1.show();
@@ -74,7 +75,7 @@ public class viewGrade {
 		Connection connect = null;
 		connect = sqliteConnection.dbconnector();
 		
-		String Signupstring = "SELECT Distinct classinfo.crn,course,credits,name,time,professor,length,room,grade FROM grade inner join classinfo on grade.crn = classinfo.crn where grade.student=?";
+		String Signupstring = "SELECT Distinct classinfo.crn,course,credits,name,time,professor,grade FROM classesadded inner join classinfo on classesadded.crn = classinfo.crn where classesadded.student=?";
 		PreparedStatement prepstate ;
 		
 		
@@ -91,9 +92,9 @@ public class viewGrade {
                 }                    
             });
             tableview.getColumns().addAll(col); 
-            col.prefWidthProperty().bind(tableview.widthProperty().multiply(0.3));
+
             //tableview.setColumnResizePolicy(tableview.CONSTRAINED_RESIZE_POLICY);
-            tableview.setPrefSize(1000.0, 400.0);
+            //tableview.setPrefSize(1000.0, 400.0);
             //ableview.get
             System.out.println("Column ["+i+"] ");
         }

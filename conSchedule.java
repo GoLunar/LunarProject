@@ -14,6 +14,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -34,7 +35,7 @@ public class conSchedule {
     public static ObservableList<ObservableList> data;
     public static TableView tableview;
     public static void conSchedule(String username) {
-       /* // Window Creation
+        // Window Creation
         Stage stage1 = new Stage();
         GridPane root1 = new GridPane();
         root1.setPadding(new Insets(10, 10, 10, 10));
@@ -48,7 +49,7 @@ public class conSchedule {
         final ComboBox termBox = new ComboBox();
         termBox.getItems().addAll(
                 "Spring Semester 2018",
-                "Summer 2018"
+                "Summer Semester 2018"
         );
 
         termBox.setPromptText("Select a Term");
@@ -72,11 +73,16 @@ public class conSchedule {
         //basically triggers button actions and also hides the term window.
         submit.setOnAction((ActionEvent e) -> {
             if (termBox.getValue() != null && !termBox.getValue().toString().isEmpty()) {
+                if (termBox.getValue().toString() == "Spring Semester 2018"){
+                    con(username);
+                }else if (termBox.getValue().toString() == "Summer Semester 2018"){
+                    
+                }
                 
                 stage1.hide();
             }
         });
-*/con(username);
+
     }
 
     public static void con(String username) {
@@ -102,15 +108,12 @@ public class conSchedule {
         	e.printStackTrace();
         }
         //Main Scene
-        Scene scene = new Scene(tableview);        
+        Scene scene = new Scene(tableview, 730,400);        
 
         stage1.setScene(scene);
         scene.getWindow().centerOnScreen();
         stage1.show();
     	
-        
-        
-        
     }
     
     public static void buildData(String username) throws SQLException{
@@ -138,9 +141,8 @@ public class conSchedule {
               });
 
               tableview.getColumns().addAll(col); 
-              col.prefWidthProperty().bind(tableview.widthProperty().multiply(0.3));
-              //tableview.setColumnResizePolicy(tableview.CONSTRAINED_RESIZE_POLICY);
-              tableview.setPrefSize(1000.0, 400.0);
+              
+
               //ableview.get
               System.out.println("Column ["+i+"] ");
           }
