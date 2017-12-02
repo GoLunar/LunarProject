@@ -63,7 +63,7 @@ public class AddDrop {
         //submit button to prompt term
         Button submit = new Button();
         submit.setText("Submit");
-
+// this is a test
         //alligns fields, buttons, labels
         //GridPane.setConstraints(termSelect, 10, 5);
         //GridPane.setConstraints(termBox, 11, 5);
