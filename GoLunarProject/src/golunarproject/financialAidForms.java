@@ -40,82 +40,95 @@ class financialAidForms {
                 grid.add(lastName,0,3);
                 grid.add(lName,0,4);
                 
-                
+                //first name
                 Label firstName = new Label("2. First Name:");
                 TextField fName = new TextField();
                 firstName.setFont(Font.font("Tahoma",FontWeight.SEMI_BOLD,15));
                 grid.add(firstName,3,3);
                 grid.add(fName, 3, 4);
                 
+                //middle name
                 Label middleInitial = new Label("Middle Initial:");
                 TextField mInitial = new TextField();
                 middleInitial.setFont(Font.font("Tahoma",FontWeight.SEMI_BOLD,15));
                 grid.add(middleInitial,6,3);
                 grid.add(mInitial,6,4);
              
-                
+                //address
                 Label fulladdress = new Label("4-7. Your permanent mailing address");
                 fulladdress.setFont(Font.font("Tahoma",FontWeight.NORMAL,12));
                 grid.add(fulladdress,0,5);
                 
+                //permanent addres
                 Label permanentaddress = new Label("4. Number and Street name:");
                 TextField pAddress = new TextField();
                 permanentaddress.setFont(Font.font("Tahoma",FontWeight.SEMI_BOLD,15));
                 grid.add(permanentaddress,0,6);
                 grid.add(pAddress,0,7);
                
+                //City Name
                 Label cityname = new Label("5. City (if not in US, country #):");
                 TextField cityName = new TextField();
                 cityname.setFont(Font.font("Tahoma",FontWeight.SEMI_BOLD,15));
                 grid.add(cityname,3,6);
                 grid.add(cityName,3,7);
                 
+                //State Initial
                 Label stateInitial = new Label("6. State:");
                 TextField stateInitialTextField = new TextField();
                 stateInitial.setFont(Font.font("Tahoma",FontWeight.SEMI_BOLD,15));
                 grid.add(stateInitial,6,6);
                 grid.add(stateInitialTextField,6,7);
                 
+                //zipcode
                 Label zipcode = new Label("7. Zipcode:");
                 TextField zipcodeTextField = new TextField();
                 zipcode.setFont(Font.font("Tahoma",FontWeight.SEMI_BOLD,15));
                 grid.add(zipcode,9,6);
                 grid.add(zipcodeTextField,9,7);
                 
+                //social security
                 Label socialsecurity= new Label("8. Social Security #:");
                 TextField socialsecurityTextField = new TextField();
                 socialsecurity.setFont(Font.font("Tahoma",FontWeight.SEMI_BOLD,15));
                 grid.add(socialsecurity,0,8);
                 grid.add(socialsecurityTextField,0,9);
                 
+                
+                //date of birth
                 Label dateofbirth = new Label("9. Date of Birth:");
                 TextField dateofbirthTextField = new TextField();
                 dateofbirth.setFont(Font.font("Tahoma",FontWeight.SEMI_BOLD,15));
                 grid.add(dateofbirth,3,8);
                 grid.add(dateofbirthTextField,3,9);
                 
+                //permanent telephone
                 Label permanenttelephone = new Label("10. Permanent Telephone:");
                 TextField permanenttelephoneTextField = new TextField();
                 permanenttelephone.setFont(Font.font("Tahoma",FontWeight.SEMI_BOLD,15));
                 grid.add(permanenttelephone,6,8);
                 grid.add(permanenttelephoneTextField,6,9);
                 
+                //license info
                 Label driverlicenseinfo = new Label("11-12. Your driver's license number and state(if any)");
                 driverlicenseinfo.setFont(Font.font("Tahoma",FontWeight.NORMAL,12));
                 grid.add(driverlicenseinfo,0,10);
                 
+                //license number
                 Label driverlicensenumber = new Label("11. License Number:");
                 TextField driverlicensenumberTextField = new TextField();
                 driverlicensenumber.setFont(Font.font("Tahoma",FontWeight.SEMI_BOLD,15));
                 grid.add(driverlicensenumber,0,11);
                 grid.add(driverlicensenumberTextField,0,12);
-               
+           
+                //state license
                 Label licensestate = new Label("12. State:");
                 TextField licensestateTextField = new TextField();
                 licensestate.setFont(Font.font("Tahoma",FontWeight.SEMI_BOLD,15));
                 grid.add(licensestate,3,11);
                 grid.add(licensestateTextField,3,12);
                 
+                //email
                 Label emailaddressinfo = new Label("We will use the email address to correspond with you. You will recieve "
                         + "FAFSA information through a secure link on the internet.");
                 emailaddressinfo.setFont(Font.font("Tahoma",FontWeight.NORMAL,8));
@@ -136,8 +149,9 @@ class financialAidForms {
                 grid.add(hbBtn,9,25);
                 
                 
-                
+              //We would like to connect this to fafsa as well as any other forms that we require for students to fill out  
               submit.setOnAction((ActionEvent e) -> {
+                  
             
                 stage1.hide();
                 });

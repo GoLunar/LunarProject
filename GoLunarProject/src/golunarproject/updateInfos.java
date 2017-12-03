@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -24,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author Andres
  */
-class updateInfos {
+class updateInfos{
     
     
     public static void updateInfo() {
@@ -37,45 +38,81 @@ class updateInfos {
 		grid.setHgap(5);
      
         // created labels and text fields
-		Label sceneTitle = new Label("Update Information");
+		
+                //Label of the Window
+                Label sceneTitle = new Label("Update Information");
                 sceneTitle.setFont(Font.font("Tahoma",FontWeight.SEMI_BOLD, 20));
+                
+                //First Name
                 Label firstName = new Label("First Name:");
                 TextField fName = new TextField();
+                
+                //middle Name
                 Label midName = new Label("Middle Name:");
                 TextField mName = new TextField();
+                
+                //lastname
                 Label lastName = new Label("Last Name:");
                 TextField lName = new TextField();
+                
+                //address
                 Label address = new Label("Address:");
                 TextField add = new TextField(); 
+                
+                //Phone Number
                 Label phoneNumber = new Label("Phone Number:");
                 TextField pN = new TextField(); 
+                
+                //email
                 Label email = new Label("Email:");
                 TextField e = new TextField();
+                
+                //date of birth
                 Label dateofbirth = new Label("Date of Birth:");
                 TextField DOB = new TextField(); 
+                
+                
+                //emergency Contact
                 Label emergencyContact = new Label("Emergency Contact:");
                 emergencyContact.setFont(Font.font("Tahoma",FontWeight.BOLD, 15));
+                TextField eCN = new TextField();
+             
                 Label emergencyContactName = new Label("Name:");
                 Label emergencyContactPhoneNumber = new Label("Phone Number:");
-                TextField eCN = new TextField(); 
                 TextField eCPN = new TextField(); 
                 
-                
+                //Scene Title
                 grid.add(sceneTitle,0,0,2,1);
+                
+                //First Name
                 grid.add(firstName,0,1);
                 grid.add(fName, 1,1);
+                
+                //Middle Name
                 grid.add(midName,0,2);
                 grid.add(mName,1,2);
+                
+                //Last Name
                 grid.add(lastName,0,3);
                 grid.add(lName,1,3);
+                
+                //Address
                 grid.add(address,0,4);
                 grid.add(add,1,4);
+                
+                //Phone Number
                 grid.add(phoneNumber,0,5);
                 grid.add(pN,1,5);
+                
+                //email
                 grid.add(email,0,6);
                 grid.add(e,1,6);
+                
+                //DOB
                 grid.add(dateofbirth,0,7);
                 grid.add(DOB,1,7);
+                
+                //Emergency
                 grid.add(emergencyContact,0,8);
                 grid.add(emergencyContactName,0,9);
                 grid.add(emergencyContactPhoneNumber,0,10);
@@ -104,35 +141,56 @@ class updateInfos {
 		stage1.setScene(scene);
 		stage1.show();
                 
-                btn.setOnAction((ActionEvent event) -> {
-                   actiontarget.setFill(Color.FIREBRICK);
-                   actiontarget.setText("Information Updated");               
-////Database connection    
-//                try {
-//
-//                Connection connect;
-//                connect = sqliteConnection.dbconnector();
-//
-//                String personalinformation = "INSERT into Info values(?,?,?,?,?,?,?,?)";
-//                PreparedStatement prepstate;
-//
-//                prepstate = connect.prepareStatement(personalinformation);
-//                prepstate.setString(1, fName.getText());
-//                prepstate.setString(2, mName.getText());
-//                prepstate.setString(3, lName.getText());
-//                prepstate.setString(4, add.getText());
-//                prepstate.setString(5, pN.getText());
-//                prepstate.setString(6, e.getText());
-//                prepstate.setString(7, eCN.getText());
-//                prepstate.setString(8, eCPN.getText());
-//                int result = prepstate.executeUpdate();
-//
-//              
-//               
-//   
-//                    
-//            } catch (SQLException a) {
-//            }
- });   
-   }
-                        }
+                                  
+                    
+            
+                    
+                btn.setOnAction(new EventHandler<ActionEvent>() {
+			
+                    
+                    public void handle(ActionEvent event) {
+				//System.out.println("hello world");
+                                
+            
+
+				try {
+					actiontarget.setFill(Color.FIREBRICK);
+                                           actiontarget.setText("Information Updated");
+                                    
+                                    
+                                        Connection connect = null;
+					connect = sqliteConnection.dbconnector();
+
+					String Signupstring = "Insert into UpdateInfo values(?,?,?,?,?,?,?,?,?)";
+					PreparedStatement prepstate;
+
+					prepstate = connect.prepareStatement(Signupstring);
+
+					prepstate.setString(1, fName.getText());
+					prepstate.setString(2, mName.getText());
+					prepstate.setString(3, lName.getText());
+					prepstate.setString(4, add.getText());
+					prepstate.setString(5, pN.getText());
+                                        prepstate.setString(6, e.getText());
+					prepstate.setString(7, DOB.getText());
+                                        prepstate.setString(8, eCN.getText());
+					prepstate.setString(9, eCPN.getText());
+                                        
+					int result = prepstate.executeUpdate();
+				
+                                        connect.commit();
+					
+					prepstate.close();
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					System.out.println(e.toString());
+					e.printStackTrace();
+				}
+
+				stage1.close();
+
+			}
+
+		});
+    }}

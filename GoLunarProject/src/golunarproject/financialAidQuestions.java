@@ -51,7 +51,9 @@ class financialAidQuestions {
 		
 		Scene scene = new Scene(grid, 400, 300);
 		grid.setId("pane1");
-		
+		//AFter the send button is pressed it would be sent as an email from the student to the finacial aid office
+                
+                
                 stage1.setTitle("Financial Aid questions");
 		stage1.setScene(scene);
 		stage1.show();

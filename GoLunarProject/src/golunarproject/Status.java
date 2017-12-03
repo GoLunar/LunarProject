@@ -16,7 +16,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
+//Eventually we would like to connect to a database where there are values for each financial aid that the student has qualified for
 public class Status {
 
     public static void Status() {
@@ -57,7 +57,7 @@ public class Status {
 
         stage1.show();
 
-        //basically triggers button actions and also hides the term window.
+        //basically button actions and also hides the term window.
         submit.setOnAction((ActionEvent e) -> {
             if (termBox.getValue() != null && !termBox.getValue().toString().isEmpty()) {
                 financialaidlookup();
@@ -90,20 +90,22 @@ public class Status {
         Fund.setFont(Font.font("Tahoma",FontWeight.BOLD, 13));
         root1.add(Fund,0,3);
         
-        
+        //Offered
         Label Offered = new Label("Offered");
         Offered.setFont(Font.font("Tahoma",FontWeight.BOLD, 13));
         root1.add(Offered,5,3);
       
-       
+        //Accepted
         Label Accepted = new Label("Accepted");
         Accepted.setFont(Font.font("Tahoma",FontWeight.BOLD, 13));
         root1.add(Accepted,10,3);
         
+        //Declined
         Label Declined  = new Label("Declined");
         Declined.setFont(Font.font("Tahoma",FontWeight.BOLD, 13));
         root1.add(Declined,15,3);
         
+        //Total
         Label Total  = new Label("Total");
         Total.setFont(Font.font("Tahoma",FontWeight.BOLD, 13));
         root1.add(Total,20,3);

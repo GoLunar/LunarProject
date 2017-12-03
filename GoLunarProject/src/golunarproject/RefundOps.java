@@ -20,6 +20,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class RefundOps {
@@ -30,7 +31,60 @@ public class RefundOps {
 		//cb.setValue("Lunar Card");
 	}
 	public static void refundOps(String username) {
-		//cb.getItems().add(null);
+
+//This is an option we might use in the future, where user just selects a button to choose the refund option.
+//            // Window Creation
+//		Stage stage1 = new Stage();
+//		GridPane grid = new GridPane();
+//		grid.setPadding(new Insets(10, 10, 10, 10));
+//		grid.setVgap(10);
+//		grid.setHgap(5);
+//                
+//                
+//                Label pantheraccountrefund = new Label("Panther Account");
+//                pantheraccountrefund.setFont(Font.font("Tahoma",FontWeight.BOLD,12));
+//                grid.add(pantheraccountrefund,0,1);
+//                
+//                Label personalaccountrefund = new Label("Personal Bank Account");
+//                personalaccountrefund.setFont(Font.font("Tahoma",FontWeight.BOLD,12));
+//                grid.add(personalaccountrefund,0,4);
+//                
+//                Label mail = new Label("Personal Check in the Mail");
+//                mail.setFont(Font.font("Tahoma",FontWeight.BOLD,12));
+//                grid.add(mail,0,7);
+//                
+//                
+//                
+//                //select button to prompt term
+//                Button pantheraccountrefundbtn = new Button("Select");
+//                HBox BtnOne = new HBox(10);
+//                BtnOne.getChildren().add(pantheraccountrefundbtn);
+//                grid.add(BtnOne,4,1);
+//                
+//                Button personalaccountrefundbtn = new Button("Select");
+//                HBox BtnTwo = new HBox(10);
+//                BtnTwo.getChildren().add(personalaccountrefundbtn);
+//                grid.add(BtnTwo,4,4);
+//                
+//                Button mailbtn = new Button("Select");
+//                HBox BtnThree = new HBox(10);
+//                BtnThree.getChildren().add(mailbtn);
+//                grid.add(BtnThree,4,7);
+//                
+//                
+//  
+//		
+//		Scene scene = new Scene(grid, 400, 300);
+//		grid.setId("pane1");
+//		
+//                stage1.setTitle("Refund Option");
+//		stage1.setScene(scene);
+//		stage1.show();
+//
+
+
+
+//cb.getItems().add(null);
 		cb.getItems().clear();
 		cb.getSelectionModel().getSelectedItem();
 		cb.getItems().addAll("Lunar Card","Direct Deposit","Paper Check");
