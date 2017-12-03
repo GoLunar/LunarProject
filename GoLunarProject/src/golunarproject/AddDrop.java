@@ -123,6 +123,12 @@ public class AddDrop {
         viewclass.setOnAction((ActionEvent refund) ->{
             classLookUp.classLookUp();
             });
+        
+       /*
+        This connects to the database
+        In aspects of the CRN, classes that want to be added, or withdraw
+        As well as seeing all the available classes
+        */
         addbut.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				System.out.println("hello world");
