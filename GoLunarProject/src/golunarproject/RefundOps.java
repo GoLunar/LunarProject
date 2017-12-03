@@ -91,6 +91,7 @@ public class RefundOps {
        String str2 = "Paper Check";
 		if(cb.getValue().equals(str)) {
         	System.out.println("true boy");
+                stage1.hide();
         }else if(cb.getValue().equals(str1)) {
         	System.out.println("true boy1");
         	Stage stage2 = new Stage();
