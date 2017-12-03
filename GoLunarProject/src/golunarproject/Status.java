@@ -189,7 +189,7 @@ public class Status {
         FederalDirectUnSubsidizedLoan.setFont(Font.font("Tahoma",FontWeight.NORMAL, 15));
         root1.add(FederalDirectUnSubsidizedLoan,0,11);
         
-        String FDULAmount = "2,000$";
+        String FDULAmount = "2,000";
         Label FederalDirectUnSubsidizedLoanAmount  = new Label(FDULAmount);
         FederalDirectUnSubsidizedLoanAmount.setFont(Font.font("Tahoma",FontWeight.NORMAL, 15));
         root1.add(FederalDirectUnSubsidizedLoanAmount,5,11);
