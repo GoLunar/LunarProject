@@ -263,8 +263,7 @@ public class Payments {
             //this is where the method for the main base page goes,
             //the method should be created in another class called
             //base page or something equivalent.
-            
-            //	This information will be put into a database 
+             //	This information will be put into a database 
             
             
             //try {
@@ -297,7 +296,9 @@ public class Payments {
 //					// TODO Auto-generated catch block
 //					System.out.println(e.toString());
 //					e.printStackTrace();
+//
 //				}
+           
         });
 
     }}
