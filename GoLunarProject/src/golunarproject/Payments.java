@@ -263,6 +263,41 @@ public class Payments {
             //this is where the method for the main base page goes,
             //the method should be created in another class called
             //base page or something equivalent.
+            
+            //	This information will be put into a database 
+            
+            
+            //try {
+//					actiontarget.setFill(Color.FIREBRICK);
+//                                           actiontarget.setText("Information Updated");
+//                                    
+//                                    
+//                                        Connection connect = null;
+//					connect = sqliteConnection.dbconnector();
+//
+//					String Signupstring = "Insert into Account values(?,?,?,?,?,?)";
+//					PreparedStatement prepstate;
+//
+//					prepstate = connect.prepareStatement(Signupstring);
+//
+//					prepstate.setString(1, fName.getText());
+//					prepstate.setString(2, mName.getText());
+//					prepstate.setString(3, lName.getText());
+//					prepstate.setString(4, cvn.getText());
+//					prepstate.setString(5, routing.getText());
+//                                        prepstate.setString(6, security questions.getText());
+//					
+//					int result = prepstate.executeUpdate();
+//				
+//                                        connect.commit();
+//					
+//					prepstate.close();
+//
+//				} catch (SQLException e) {
+//					// TODO Auto-generated catch block
+//					System.out.println(e.toString());
+//					e.printStackTrace();
+//				}
         });
 
     }}
