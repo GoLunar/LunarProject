@@ -48,12 +48,8 @@ public class RefundOps {
 	stage1.show();
 	Label lab = new Label("If your student account shows a credit balance, you may be entitled to receive a refund. Please follow the steps below to \nselect your refund preference. \n" + 
 			"\n" + 
-			"Option 1 - Direct deposit \n" + 
-			"You have the option to have your refund electronically deposited to the checking or savings account you designate.\n" + 
-			"\n" + 
-		 
-			"\n" + 
-			"Option 2 - Refund to your Lunar Card \n" + 
+			"Option 1 -  Refund to your Lunar Card \n" + 
+                        "\n" + 
 			"The Office of Student Refunds in partnership with Auxiliary Services is now offering an option to have your student account \n refund available on your Money Network® Enabled Lunar Card \n" + 
 			"\n" + 
 			"Follow these steps to have your refund deposited to your Lunar Card: \n" + 
@@ -67,6 +63,12 @@ public class RefundOps {
 			"Step 3: Authorize the Student Refunds Office to deposit your refund to your Money Network® Account\n" + 
 			"Go to the Authorizations page and select \"Authorize\" from the drop down menu under the \"Panther Card Money Network \nAuthorization\" section.\n" + 
 			"\n" + 
+			
+			"Option 2 - Direct deposit \n" + 
+                         "You have the option to have your refund electronically deposited to the checking or savings account you designate.\n" + 
+			"\n" + 
+		 
+			
 			"Option 3 - Paper Check \n" + 
 			"If you select \"Paper Check\" your refund will be sent to your address");
 	bp1.setCenter(lab);
