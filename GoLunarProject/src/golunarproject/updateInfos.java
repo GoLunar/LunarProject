@@ -107,33 +107,32 @@ class updateInfos {
                 btn.setOnAction((ActionEvent event) -> {
                    actiontarget.setFill(Color.FIREBRICK);
                    actiontarget.setText("Information Updated");               
-//Database connection    
-                try {
-
-                Connection connect;
-                connect = sqliteConnection.dbconnector();
-
-                String personalinformation = "INSERT into Info values(?,?,?,?,?,?,?,?)";
-                PreparedStatement prepstate;
-
-                prepstate = connect.prepareStatement(personalinformation);
-                prepstate.setString(1, fName.getText());
-                prepstate.setString(2, mName.getText());
-                prepstate.setString(3, lName.getText());
-                prepstate.setString(4, add.getText());
-                prepstate.setString(5, pN.getText());
-                prepstate.setString(6, e.getText());
-                prepstate.setString(7, eCN.getText());
-                prepstate.setString(8, eCPN.getText());
-                int result = prepstate.executeUpdate();
-
-              
-               
-   
-                    
-            } catch (SQLException a) {
-            }
-        });
-   
-       
-    }}
+////Database connection    
+//                try {
+//
+//                Connection connect;
+//                connect = sqliteConnection.dbconnector();
+//
+//                String personalinformation = "INSERT into Info values(?,?,?,?,?,?,?,?)";
+//                PreparedStatement prepstate;
+//
+//                prepstate = connect.prepareStatement(personalinformation);
+//                prepstate.setString(1, fName.getText());
+//                prepstate.setString(2, mName.getText());
+//                prepstate.setString(3, lName.getText());
+//                prepstate.setString(4, add.getText());
+//                prepstate.setString(5, pN.getText());
+//                prepstate.setString(6, e.getText());
+//                prepstate.setString(7, eCN.getText());
+//                prepstate.setString(8, eCPN.getText());
+//                int result = prepstate.executeUpdate();
+//
+//              
+//               
+//   
+//                    
+//            } catch (SQLException a) {
+//            }
+ });   
+   }
+                        }
