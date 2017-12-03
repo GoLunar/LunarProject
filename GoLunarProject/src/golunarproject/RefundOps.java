@@ -99,7 +99,7 @@ public class RefundOps {
     		BorderPane.setAlignment(lab3,Pos.CENTER);
     		stage2.setTitle("Refund Option: Direct Deposit");
     		Label lab1 = new Label("Please enter Account Number: ");
-    		Label lab2 = new Label("Please enter Rounting number:  ");
+    		Label lab2 = new Label("Please enter Routing number:  ");
     		TextField tf1 = new TextField();
     		TextField tf2 = new TextField();
     		tf1.setMaxWidth(200.0);
