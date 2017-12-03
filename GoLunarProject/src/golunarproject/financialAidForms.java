@@ -172,7 +172,57 @@ submit.setOnAction((ActionEvent e) -> {
 		stage1.setScene(scene);
 		stage1.show();
                 
-                
+//Database connection example
+
+
+//                 submit.setOnAction(new EventHandler<ActionEvent>() {
+//			
+//                    
+//                    public void handle(ActionEvent event) {
+//				//System.out.println("hello world");
+//                                
+//            
+//
+//				try {
+//					actiontarget.setFill(Color.FIREBRICK);
+//                                           actiontarget.setText("Form Accepted");
+//                                    
+//                                    
+//                                        Connection connect = null;
+//					connect = sqliteConnection.dbconnector();
+//
+//					String Signupstring = "Insert into UpdateInfo values(?,?,?,?,?,?,?,?,?)";
+//					PreparedStatement prepstate;
+//
+//					prepstate = connect.prepareStatement(Signupstring);
+//
+//					prepstate.setString(1, fName.getText());
+//					prepstate.setString(2, mName.getText());
+//					prepstate.setString(3, lName.getText());
+//					prepstate.setString(4, add.getText());
+//					prepstate.setString(5, pN.getText());
+//                                        prepstate.setString(6, e.getText());
+//					prepstate.setString(7, DOB.getText());
+//                                        prepstate.setString(8, eCN.getText());
+//					prepstate.setString(9, eCPN.getText());
+//                                        
+//					int result = prepstate.executeUpdate();
+//				
+//                                        connect.commit();
+//					
+//					prepstate.close();
+//
+//				} catch (SQLException e) {
+//					// TODO Auto-generated catch block
+//					System.out.println(e.toString());
+//					e.printStackTrace();
+//				}
+//
+//				stage1.close();
+//
+//			}
+//
+//		});
     }
     
 }
