@@ -208,7 +208,7 @@ public class Status {
         
         
         //Total Funds
-        Label TotalFunds  = new Label("16,900$");
+        Label TotalFunds  = new Label("$ 16,900");
         TotalFunds.setFont(Font.font("Tahoma",FontWeight.EXTRA_BOLD, 20));
         root1.add(TotalFunds,20,15);
         

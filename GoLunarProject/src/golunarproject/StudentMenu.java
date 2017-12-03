@@ -78,8 +78,8 @@ public class StudentMenu {
         accounts(username);
         tabPane.getTabs().add(tab5);
         financialAid();
-        tabPane.getTabs().add(tab6);
-        personalInfo();
+//        tabPane.getTabs().add(tab6);
+//        personalInfo();
 
         // bind to take available space
         borderPane.prefHeightProperty().bind(scene.heightProperty());
@@ -319,20 +319,20 @@ public class StudentMenu {
 *
 *
 */
-    public static void personalInfo() {
-        Hyperlink address = new Hyperlink();
-        address.setText("Change Address(es) and Phone(s)");
-
-        Hyperlink changeInfo = new Hyperlink();
-        changeInfo.setText("Add or Update Emergency Contacts");
-
-        VBox vbox = new VBox();
-        vbox.getChildren().add(new Label("Personal Information Menu"));
-        vbox.getChildren().add(address);
-        vbox.getChildren().add(changeInfo);
-        vbox.setSpacing(5);
-        vbox.setPadding(new Insets(50, 50, 50, 50));
-        tab6.setContent(vbox);
-    }
+//    public static void personalInfo() {
+//        Hyperlink address = new Hyperlink();
+//        address.setText("Change Address(es) and Phone(s)");
+//
+//        Hyperlink changeInfo = new Hyperlink();
+//        changeInfo.setText("Add or Update Emergency Contacts");
+//
+//        VBox vbox = new VBox();
+//        vbox.getChildren().add(new Label("Personal Information Menu"));
+//        vbox.getChildren().add(address);
+//        vbox.getChildren().add(changeInfo);
+//        vbox.setSpacing(5);
+//        vbox.setPadding(new Insets(50, 50, 50, 50));
+//        tab6.setContent(vbox);
+    //}
 
 }
