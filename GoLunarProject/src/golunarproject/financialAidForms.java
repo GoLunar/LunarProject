@@ -30,7 +30,10 @@ class financialAidForms {
 		grid.setHgap(3);
      
         // created labels and text field for form
-             
+        /*This information will be use with a fafsa form in the future
+        * This will cut down on the time when reapplying to fafs
+        * And will make filling out any information with Go Lunar easier
+        */   
                 Label enterfullname = new Label("1-3. Enter your full name (as it appears on your Social Security card)");
                 enterfullname.setFont(Font.font("Tahoma",FontWeight.NORMAL,12));
                 grid.add(enterfullname,0,1);
@@ -149,8 +152,9 @@ class financialAidForms {
                 grid.add(hbBtn,9,25);
                 
                 
-              //We would like to connect this to fafsa as well as any other forms that we require for students to fill out  
-              submit.setOnAction((ActionEvent e) -> {
+//We would like to connect this to fafsa as well as any other forms that we require for students to fill out  
+
+submit.setOnAction((ActionEvent e) -> {
                   
             
                 stage1.hide();
