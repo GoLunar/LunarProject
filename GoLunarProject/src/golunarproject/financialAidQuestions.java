@@ -1,5 +1,10 @@
 package golunarproject;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -8,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -61,6 +67,58 @@ class financialAidQuestions {
                 stage1.setTitle("Financial Aid questions");
 		stage1.setScene(scene);
 		stage1.show();
+                
+                //This would be how it connects to a database that would pull the students email
+                //send to financial aid services
+//              btn.setOnAction(new EventHandler<ActionEvent>() {
+//			
+//                    
+//                    public void handle(ActionEvent event) {
+//				//System.out.println("hello world");
+//                                
+//            
+//
+//				try {
+//					actiontarget.setFill(Color.FIREBRICK);
+//                                           actiontarget.setText("Information Updated");
+//                                    
+//                                    
+//                                        Connection connect = null;
+//					connect = sqliteConnection.dbconnector();
+//
+//					String Signupstring = "Insert into UpdateInfo values(?,?,?,?,?,?,?,?,?)";
+//					PreparedStatement prepstate;
+//
+//					prepstate = connect.prepareStatement(Signupstring);
+//
+//					prepstate.setString(1, fName.getText());
+//					prepstate.setString(2, mName.getText());
+//					prepstate.setString(3, lName.getText());
+//					prepstate.setString(4, add.getText());
+//					prepstate.setString(5, pN.getText());
+//                                      prepstate.setString(6, e.getText());
+//					prepstate.setString(7, DOB.getText());
+//                                        prepstate.setString(8, eCN.getText());
+//					prepstate.setString(9, eCPN.getText());
+//                                        
+//					int result = prepstate.executeUpdate();
+//				
+//                                        connect.commit();
+//					
+//					prepstate.close();
+//
+//				} catch (SQLException e) {
+//					// TODO Auto-generated catch block
+//					System.out.println(e.toString());
+//					e.printStackTrace();
+//				}
+//
+//				stage1.close();
+//
+//			}
+//
+//		});
+//    }}
                 
     }
     
