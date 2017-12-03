@@ -154,7 +154,7 @@ class AddStudent {
 
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM students");
             while (rs.next()) {
-                //this.data.add(new Student(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                this.data.add(new Student(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             }
         } catch (SQLException e) {
             System.err.println("Error " + e);
