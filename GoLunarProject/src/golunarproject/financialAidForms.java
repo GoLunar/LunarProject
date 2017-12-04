@@ -172,6 +172,11 @@ submit.setOnAction((ActionEvent e) -> {
 		stage1.setScene(scene);
 		stage1.show();
                 
+/*
+                This is going to be used to store all the financial aid information 
+                so that it will be easier to fill out forms in the future for students
+                
+                */
 //Database connection example
 
 
