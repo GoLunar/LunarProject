@@ -638,7 +638,42 @@ public class RefundOps {
 			// the method should be created in another class called
 			// base page or something equivalent.
 		});
+        }
 
+         public static void enterintoDB() {
+       //      try {
+//					actiontarget.setFill();
+//                                           actiontarget.setText();
+//                                    
+//                                    
+//                                        Connection connect = null;
+//					connect = sqliteConnection.dbconnector();
+//
+//					String Signupstring = "Insert into BankAccount values(?,?,?,?,?,?)";
+//					PreparedStatement prepstate;
+//
+//					prepstate = connect.prepareStatement(Signupstring);
+//
+//					prepstate.setString(1, ActN.getText());
+//					prepstate.setString(2, RoutingN.getText());
+//					prepstate.setString(3, CVN.getText());
+//					prepstate.setString(4, security .getText());
+//					
+//                                        
+//					int result = prepstate.executeUpdate();
+//				
+//                                        connect.commit();
+//					
+//					prepstate.close();
+//
+//				} catch (SQLException e) {
+//					// TODO Auto-generated catch block
+//					System.out.println(e.toString());
+//					e.printStackTrace();
+//				}
+    
+    
+}
 	}
 
-}
+
