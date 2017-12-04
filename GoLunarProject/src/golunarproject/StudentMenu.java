@@ -214,10 +214,9 @@ public class StudentMenu {
         tab3.setContent(vbox);
     }
 /*
-*
-*
-*
-*
+*Accouunts tab, this is one of the basic tabs
+    where the students will be able to see
+    the funds going in and out of their accounts
 */
     public static void accounts(String username) throws SQLException {
         Hyperlink payment = new Hyperlink();
@@ -262,10 +261,9 @@ public class StudentMenu {
     
     
 /*
-*
-*
-*
-*
+*The financial aid tab, is where the student can fill out financial aid forms and questions
+    as well as view the available financial aid options they were eligible for the 
+    upcoming semester
 */
     public static void financialAid() {
         Hyperlink status = new Hyperlink();
@@ -314,10 +312,9 @@ public class StudentMenu {
     
     
 /*
-*
-*
-*
-*
+*The Personal info tab was going to be used for more personal information 
+    but that tab was put out due to the student account taking in a lot of the 
+    student information
 */
 //    public static void personalInfo() {
 //        Hyperlink address = new Hyperlink();
